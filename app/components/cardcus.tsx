@@ -1,0 +1,104 @@
+"use client";
+
+import React from "react";
+
+const foodItems = [
+  {
+    image: "public/assests/food1.png",
+    discount: "-40%",
+    title: "Chef Burgers London",
+    tag: "Restaurant",
+  },
+  {
+    image: "public/assests/food2.png",
+    discount: "-20%",
+    title: "Grand Ai Cafe London",
+    tag: "Restaurant",
+  },
+  {
+    image: "public/assests/food3.png",
+    discount: "-17%",
+    title: "Butterbrot Caf’e London",
+    tag: "Restaurant",
+  },
+];
+
+const categories = ["Vegan", "Sushi", "Pizza & Fast food", "others"];
+
+export default function FoodCardGrid() {
+  return (
+    <div className=" py-12 ">
+      {/* Heading and Filters */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 px-[50px]">
+        <h1 className="text-3xl font-bold text-black leading-snug">
+          Up to <span className="font-extrabold">−40%</span>{" "}
+          <span className="text-[#FC8A06]">🎉</span> Order.uk exclusive deals
+        </h1>
+
+        <div className="flex gap-4 items-center flex-wrap">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className="px-5 py-2 rounded-full text-black font-medium border border-transparent hover:border-[#FC8A06] hover:text-[#FC8A06] transition-colors duration-200"
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Grid of Cards */}
+      <div className="flex flex-wrap gap-5 justify-center px-[1px]">
+        {foodItems.map((item, index) => (
+          <div
+            key={index}
+            className="relative rounded-[12px] overflow-hidden shadow-md group"
+            style={{ width: "488px", height: "325px", opacity: 1 }}
+          >
+            {/* Discount Badge */}
+            <div
+              className="absolute bg-[#0A1026] text-white text-sm font-bold z-10 flex items-center justify-center"
+              style={{
+                width: "88px",
+                height: "66px",
+                transform: "rotate(0deg)",
+                opacity: 1,
+                top: "1px",
+                right: "16px",
+                borderBottomRightRadius: "12px",
+                borderBottomLeftRadius: "12px",
+              }}
+            >
+              {item.discount}
+            </div>
+
+            {/* Image */}
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end px-5 pb-5 z-10">
+              <span className="text-[#FC8A06] text-sm font-medium mb-1">
+                {item.tag}
+              </span>
+              <h2
+                className="text-white text-xl font-bold leading-tight"
+                style={{
+                  width: "256px",
+                  height: "63px",
+                  transform: "rotate(0deg)",
+                  opacity: 1,
+                }}
+              >
+                {item.title}
+              </h2>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
