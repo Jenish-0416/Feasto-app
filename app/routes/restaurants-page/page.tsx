@@ -1,13 +1,13 @@
 import React from "react";
-import Cardcus from "~/components/brands";
-import Burger from "~/components/burger";
-import Drinks from "~/components/colddrink";
-import CustomerReview from "~/components/customerreview";
-import Fries from "~/components/fries";
-import Information from "~/components/imformation";
-import MapCard from "~/components/mapcard";
-import MenuNav from "~/components/menunav";
-import SecondHeader from "~/components/secondheader";
+import Cardcus from "~/routes/landing-page/comonents/brands";
+import Burger from "~/routes/restaurants-page/components/burger";
+import Drinks from "~/routes/restaurants-page/components/colddrink";
+import CustomerReview from "~/routes/ordering-page/components/customerreview";
+import Fries from "~/routes/restaurants-page/components/fries";
+import Information from "~/routes/ordering-page/components/imformation";
+import MapCard from "~/routes/ordering-page/components/mapcard";
+import MenuNav from "~/routes/restaurants-page/components/menunav";
+import SecondHeader from "~/routes/restaurants-page/components/secondheader";
 
 export default function Page() {
   return (
@@ -23,7 +23,6 @@ export default function Page() {
       <br />
       <CustomerReview />
       <Cardcus />
-      
     </div>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import { Clock, FileText, Bike } from "lucide-react";
-import { categories, foodItems, pizzaItems } from "../lib/constants";
+import { categories, foodItems, pizzaItems } from "../../../lib/constants";
 
-export default function SecondHeader() {
+export default function OrderHero() {
   return (
     <div className="relative bg-[url('/public/assests/secheader.svg')] rounded-2xl py-[60px] px-[100px]">
       {/* Overlay */}

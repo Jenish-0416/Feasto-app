@@ -6,7 +6,7 @@ import {
   burgers,
   menuItems,
   brandCards,
-} from "../lib/constants";
+} from "../../../lib/constants";
 
 const About: React.FC = () => {
   const [activeTab, setActiveTab] = useState("Frequent Questions");

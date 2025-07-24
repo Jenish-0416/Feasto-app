@@ -1,12 +1,12 @@
-import { Hero } from "~/components/hero";
-import FoodCardGrid from "~/components/cardcus";
-import CategoryCards from "~/components/typefood";
-import Adver from "~/components/adver";
-import Withus from "~/components/withus";
-import About from "~/components/about";
-import Statesoverview from "~/components/statesoverview";
+import { Hero } from "~/routes/landing-page/comonents/hero";
+import FoodCardGrid from "~/routes/landing-page/comonents/cardcus";
+import CategoryCards from "~/routes/landing-page/comonents/typefood";
+import Adver from "~/routes/landing-page/comonents/adver";
+import Withus from "~/routes/landing-page/comonents/withus";
+import About from "~/routes/landing-page/comonents/about";
+import Statesoverview from "~/routes/landing-page/comonents/statesoverview";
 import Footer from "~/components/footer";
-import Brands from "~/components/brands";
+import Brands from "~/routes/landing-page/comonents/brands";
 // import HeardStatic from "../routes/landig-page/components/heardstatic"; // Removed broken import
 export default function LandingPage() {
   return (
@@ -16,7 +16,7 @@ export default function LandingPage() {
       <FoodCardGrid />
       <CategoryCards />
       <Brands />
-      <br/>
+      <br />
       <Adver />
       <Withus />
       <About />

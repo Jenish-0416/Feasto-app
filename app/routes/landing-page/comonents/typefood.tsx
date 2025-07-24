@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { cards, type FoodCategoryCard } from "../lib/constants";
+import { cards, type FoodCategoryCard } from "../../../lib/constants";
 
 export default function CategoryCards() {
   return (
