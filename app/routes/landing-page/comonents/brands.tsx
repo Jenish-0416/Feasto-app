@@ -1,56 +1,38 @@
 import { Card, CardTitle, CardContent } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
+import { useEffect, useState } from "react";
+import { api } from "~/lib/utils";
 
-const cards = [
-  {
-    image: "public/assests/mcd.png",
-    alt: "Delicious dish 1",
-    title: "McDonald’s London ",
-    button: "Order Now",
-    badgeColor: "bg-[#0A1026] text-white",
-  },
-  {
-    image: "public/assests/papajohns.png",
-    alt: "Delicious dish 2",
-    title: "Papa Johns",
+type JobItem = {
+    id: number;
+    image: string;
+    alt: string;
+    title: string;
+    button: string;
+    badgeColor: string;
+  };
 
-    button: "Order Now",
-    badgeColor: "bg-red-700 text-white",
-  },
-  {
-    image: "public/assests/kfc.png",
-    alt: "Delicious dish 3",
-    title: "KFC West London",
 
-    button: "Order Now",
-    badgeColor: "bg-green-700 text-white",
-  },
-  {
-    image: "public/assests/texas.png",
-    alt: "Delicious dish 3",
-    title: "Texas Chicken",
-
-    button: "Order Now",
-    badgeColor: "bg-green-700 text-white",
-  },
-  {
-    image: "public/assests/burgerking.png",
-    alt: "Delicious dish 3",
-    title: "Burger King",
-
-    button: "Order Now",
-    badgeColor: "bg-green-700 text-white",
-  },
-  {
-    image: "public/assests/shaurma.png",
-    alt: "Delicious dish 3",
-    title: "Shaurma 1",
-    button: "Order Now",
-    badgeColor: "bg-green-700 text-white",
-  },
-];
 
 export default function Cardcus() {
+
+
+    const [jobs, setJobs] = useState<JobItem[]>([]);
+  
+    const getJobs = async () => {
+      try {
+        const res = await api.get("/cards");
+        console.log("response", res.data);
+        setJobs(res.data);
+      } catch (err) {
+        console.error("Failed to fetch jobs", err);
+      }
+    };
+  
+    useEffect(() => {
+      getJobs();
+    }, []);
+
   return (
     <div className=" mt-[56px] mb-[51px]">
       <h2
@@ -68,7 +50,7 @@ export default function Cardcus() {
         Popular Restaurants
       </h2>
       <div className="flex flex-wrap justify-start gap-4">
-        {cards.map((card, idx) => (
+        {jobs.map((job, idx) => (
           <Card
             key={idx}
             className="shadow-lg bg-[#FC8A06] relative overflow-hidden"
@@ -81,8 +63,8 @@ export default function Cardcus() {
             }}
           >
             <img
-              src={card.image}
-              alt={card.alt}
+              src={job.image}
+              alt={job.alt}
               className="object-cover"
               style={{
                 width: "238px",
@@ -107,7 +89,7 @@ export default function Cardcus() {
                   left: "128px",
                 }}
               >
-                {card.title}
+                {job.title}
               </CardTitle>
             </CardContent>
           </Card>

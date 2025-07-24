@@ -1,0 +1,74 @@
+{
+    "foodItems": [
+      {
+        "id": 1,
+        "image": "public/assests/food1.png",
+        "discount": "-40%",
+        "title": "Chef Burgers London",
+        "tag": "Restaurant"
+      },
+      {
+        "id": 2,
+        "image": "public/assests/food2.png",
+        "discount": "-20%",
+        "title": "Grand Ai Cafe London",
+        "tag": "Restaurant"
+      },
+      {
+        "id": 3,
+        "image": "public/assests/food3.png",
+        "discount": "-17%",
+        "title": "Butterbrot Caf’e London",
+        "tag": "Restaurant"
+      }
+    ],
+    "cards" : [
+        {
+          "image": "public/assests/mcd.png",
+          "alt": "Delicious dish 1",
+          "title": "McDonald’s London ",
+          "button": "Order Now",
+          "badgeColor": "bg-[#0A1026] text-white"
+        },
+        {
+          "image": "public/assests/papajohns.png",
+          "alt": "Delicious dish 2",
+          "title": "Papa Johns",
+      
+          "button": "Order Now",
+          "badgeColor": "bg-red-700 text-white"
+        },
+        {
+          "image": "public/assests/kfc.png",
+          "alt": "Delicious dish 3",
+          "title": "KFC West London",
+      
+          "button": "Order Now",
+          "badgeColor": "bg-green-700 text-white"
+        },
+        {
+          "image": "public/assests/texas.png",
+          "alt": "Delicious dish 3",
+          "title": "Texas Chicken",
+      
+          "button": "Order Now",
+          "badgeColor": "bg-green-700 text-white"
+        },
+        {
+          "image": "public/assests/burgerking.png",
+          "alt": "Delicious dish 3",
+          "title": "Burger King",
+      
+          "button": "Order Now",
+          "badgeColor": "bg-green-700 text-white"
+        },
+        {
+          "image": "public/assests/shaurma.png",
+          "alt": "Delicious dish 3",
+          "title": "Shaurma 1",
+          "button": "Order Now",
+          "badgeColor": "bg-green-700 text-white"
+        }
+      ]
+  }
+  

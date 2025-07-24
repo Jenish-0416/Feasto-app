@@ -1,4 +1,6 @@
-// mockData.ts
+// data.ts
+import axios from 'axios';
+
 export type Card = { image: string; alt: string; title: string; description: string };
 export type FoodItem = { image: string; discount: string; title: string; tag: string };
 export type MenuNavFoodItem = { title: string; tag: string; discount: string; image: string };
@@ -26,27 +28,50 @@ export const mockData = {
     { image: "/assets/food3.png", discount: "-17%", title: "Butterbrot Café London", tag: "Restaurant" },
   ],
   menuNavFoodItems: [
-    { title: "First Order Discount", tag: "McDonald’s East London", discount: "-20% OFF", image: "/assets/firstorder.svg" },
-    { title: "Vegan Discount", tag: "McDonald’s East London", discount: "-20% OFF", image: "/assets/vegan.svg" },
-    { title: "Free ice Cream Offer", tag: "McDonald’s East London", discount: "-100% OFF", image: "/assets/freeicecream.svg" },
-  ],
-  fries: [
-    { title: "Royal Cheese Burger with extra Fries", description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium", price: "GBP 23.10", image: "/assets/fries1.svg" },
-    { title: "The classics for 3", description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks", price: "GBP 23.10", image: "/assets/fries2.svg" },
-  ],
-  drinks: [
-    { title: "Royal Cheese Burger with extra Fries", description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium", price: "GBP 23.10", image: "/assets/drink1.svg" },
-  ],
-  reviews: [
-    { name: "St Glx", location: "South London", date: "24th September, 2023", review: "The positive aspect was undoubtedly the efficiency of the service...", avatar: "/assets/reviewdp.svg" },
-  ],
-  burgers: [
-    { title: "Royal Cheese Burger with extra Fries", description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium", price: "GBP 23.10", image: "/assets/burger1.svg" },
-  ],
-  brandCards: [
-    { image: "/assets/mcd.png", alt: "Delicious dish 1", title: "McDonald’s London", button: "Order Now", badgeColor: "bg-[#0A1026] text-white" },
-  ],
-  pizzaItems: [
-    { title: "Farm House Xtreme Pizza", description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger...", image: "/assets/orderpizza1.svg" },
-  ],
+    { title: "First Order Discount", tag: "McDonald's East London", discount: "-20% OFF", image: "/assets/firstorder.svg" },
+    { title: "Vegan Discount", tag: "McDonald's East London", discount: "-20% OFF", image: "/assets/vegan.svg" },
+    { title: "Free ice Cream Offer", tag: "McDonald's East London", discount: "-100% OFF", image: "/assets/freeicecream.svg" },
+  ]
+} as const;
+
+// Create a reusable Axios instance with default config
+const api = axios.create({
+  baseURL: 'https://jsonplaceholder.typicode.com', // Replace with your actual API URL
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Example function to fetch data
+export const fetchData = async () => {
+  try {
+    const response = await api.get('/posts?_limit=5');
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error('API Error:', error);
+    return { 
+      success: false, 
+      error: 'Failed to fetch data',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    };
+  }
+};
+
+// Example function to post data
+export const postData = async (data: any) => {
+  try {
+    const response = await api.post('/posts', data);
+    return { 
+      success: true, 
+      data: response.data,
+      message: 'Data created successfully' 
+    };
+  } catch (error) {
+    console.error('API Error:', error);
+    return { 
+      success: false, 
+      error: 'Failed to create data',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    };
+  }
 };

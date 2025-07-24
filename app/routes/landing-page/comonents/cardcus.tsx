@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { api } from "~/lib/utils";
 
 const foodItems = [
   {
@@ -22,15 +23,42 @@ const foodItems = [
     tag: "Restaurant",
   },
 ];
+type JobItem = {
+  id: number;
+  image: string;
+  discount: string;
+  title: string;
+  tag: string;
+};
 
 const categories = ["Vegan", "Sushi", "Pizza & Fast food", "others"];
 
 export default function FoodCardGrid() {
+
+
+  const [jobs, setJobs] = useState<JobItem[]>([]);
+
+  const getJobs = async () => {
+    try {
+      const res = await api.get("/foodItems");
+      console.log("response", res.data);
+      setJobs(res.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
+
+  useEffect(() => {
+    getJobs();
+  }, []);
+
   return (
     <div className=" py-12 ">
       {/* Heading and Filters */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 px-4 md:px-12 min-h-[80px]">
-        <h1 className="text-2xl md:text-4xl font-bold">Up to -40% 🎊 Order.uk exclusive deals</h1>
+        <h1 className="text-2xl md:text-4xl font-bold">
+          Up to -40% 🎊 Order.uk exclusive deals
+        </h1>
 
         <div className="flex flex-wrap gap-2 md:gap-4">
           {categories.map((cat) => (
@@ -46,7 +74,7 @@ export default function FoodCardGrid() {
 
       {/* Grid of Cards */}
       <div className="flex flex-wrap gap-5 justify-center px-[1px]">
-        {foodItems.map((item, index) => (
+        {jobs.map((item, index) => (
           <div
             key={index}
             className="relative rounded-[12px] overflow-hidden shadow-md group"
