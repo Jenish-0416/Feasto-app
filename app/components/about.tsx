@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import {
+  fries,
+  drinks,
+  reviews,
+  burgers,
+  menuItems,
+  brandCards,
+} from "../lib/constants";
 
 const About: React.FC = () => {
   const [activeTab, setActiveTab] = useState("Frequent Questions");

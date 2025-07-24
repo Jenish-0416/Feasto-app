@@ -3,12 +3,14 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
+
+
 const categories = [
   "Offers",
   "Burgers",
   "Fries",
   "Snacks",
-  "Salads",
+  "Salads", 
   "Cold drinks",
   "Happy Meal®",
   "Desserts",
@@ -68,7 +70,7 @@ export default function MenuNav() {
           >
             {/* Discount Badge */}
             <div
-              className="absolute bg-[#0A1026] text-white text-sm font-bold z-10 flex items-center justify-center"
+              className="absolute bg-[#0A1026] text-white text-sm font-bold z-20 flex items-center justify-center"
               style={{
                 width: "88px",
                 height: "66px",
@@ -88,8 +90,8 @@ export default function MenuNav() {
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end px-5 pb-5 z-10">
+            {/* Gradient Overlay with Text */}
+            <div className="absolute inset-0 z-10 bg-[linear-gradient(245.7deg,_rgba(255,_255,_255,_0)_0.94%,_rgba(3,_8,_31,_0.19)_51.68%,_rgba(3,_8,_31,_0.89)_87.9%)] flex flex-col justify-end px-5 pb-5">
               <span className="text-[#FC8A06] text-sm font-medium mb-1">
                 {item.tag}
               </span>
@@ -106,17 +108,15 @@ export default function MenuNav() {
               </h2>
             </div>
 
-           {/* Plus Button (Styled like your screenshot) */}
-<div className="absolute bottom-0 right-0 z-20">
-  <div
-    className="w-[97px] h-[89px] bg-white/80 rounded-tl-[40px] flex items-center justify-center backdrop-blur-sm"
-  >
-    <div className="w-[40px] h-[40px] rounded-full bg-[#0A1026] flex items-center justify-center">
-      <FaPlus className="text-white text-base" />
-    </div>
-  </div>
-</div>
-
+            {/* Plus Button */}
+            <div className="absolute bottom-0 right-0 z-20">
+              <div className="w-[97px] h-[89px] bg-white/80 rounded-tl-[40px] flex items-center justify-center backdrop-blur-sm">
+                <div className="w-[40px] h-[40px] rounded-full bg-[#0A1026] flex items-center justify-center">
+                  <FaPlus className="text-white text-base" />
+              
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>

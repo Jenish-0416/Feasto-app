@@ -61,7 +61,7 @@ export default function Burger() {
             }`}
           >
             {/* Left side - Text */}
-            <div className="p-5 flex-1">
+            <div className="p-10 flex-1">
               <h3 className="text-lg font-semibold text-black mb-2">
                 {item.title}
               </h3>
@@ -70,7 +70,7 @@ export default function Burger() {
             </div>
 
             {/* Right side - Image */}
-            <div className="relative w-[160px] h-[160px] flex-shrink-0 rounded-tr-xl rounded-br-xl overflow-hidden">
+            <div className="relative w-[180px] h-[180px] flex-shrink-1 rounded-xl rounded-br-xl overflow-hidden right-5">
               <img
                 src={item.image}
                 alt={item.title}
@@ -79,7 +79,7 @@ export default function Burger() {
 
               {/* White corner with + icon */}
               <div className="absolute bottom-0 right-0">
-                <div className="w-[50px] h-[50px] bg-white/80 rounded-tl-[30px] flex items-center justify-center backdrop-blur-sm">
+                <div className="w-[70px] h-[70px] bg-white/80 rounded-tl-[30px] flex items-center justify-center backdrop-blur-sm">
                   <div className="w-8 h-8 bg-[#0A1026] rounded-full flex items-center justify-center">
                     <FaPlus className="text-white text-xs" />
                   </div>

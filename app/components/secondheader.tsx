@@ -8,7 +8,6 @@ export default function SecondHeader() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-[#F4F4F4E5] rounded-2xl z-0" />
 
-
       {/* Content */}
       <div className="relative z-10 flex items-center justify-between max-w-[1520px] mx-auto">
         {/* Left Section */}
@@ -23,17 +22,21 @@ export default function SecondHeader() {
           <div className="flex flex-wrap gap-4 pt-4">
             <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#03081F] text-white">
               <FileText className="w-5 h-5" />
-              <span className="text-base font-medium">Minimum Order: 12 GBP</span>
+              <span className="text-base font-medium">
+                Minimum Order: 12 GBP
+              </span>
             </div>
             <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#03081F] text-white">
               <Bike className="w-5 h-5" />
-              <span className="text-base font-medium">Delivery in 20–25 Minutes</span>
+              <span className="text-base font-medium">
+                Delivery in 20–25 Minutes
+              </span>
             </div>
           </div>
 
           {/* Open Until */}
           <div
-            className="mt-6 inline-flex items-start gap-2 px-6 py-4 bg-[#FF9100] text-black text-base font-semibold"
+            className="mt-10 items-center justify-center inline-flex  gap-2 px-6 py-4 bg-[#FF9100] text-black  font-semibold"
             style={{
               borderTopRightRadius: "12px",
               borderBottomRightRadius: "12px",
@@ -54,7 +57,7 @@ export default function SecondHeader() {
             className="object-contain w-full h-full"
           />
 
-          <div className="absolute left-[-60px] top-1/2 transform -translate-y-1/2 bg-white text-black shadow-xl px-6 py-4 h-[130px] w-[120px]">
+          <div className="absolute left-[-60px]  transform -translate-y-1/2 bg-white text-black shadow-xl px-6 py-6 h-[158px] w-[120px] rounded-2xl">
             <p className="text-4xl font-semibold">3.4</p>
             <p className="text-yellow-500 text-lg leading-none">★★★★☆</p>
             <p className="text-sm text-gray-600">1,360 reviews</p>

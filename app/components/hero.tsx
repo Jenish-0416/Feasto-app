@@ -12,7 +12,7 @@ export function Hero() {
 
       <Flex
         direction="column"
-        className="absolute top-1/2 -translate-y-1/2 left-[150px] space-y-6 max-w-[550px]"
+        className="absolute top-1/2 -translate-y-1/2 left-[80px] space-y-6 max-w-[550px]"
       >
         <div className="flex flex-col space-y-4">
           <p className="text-[#03081F] font-medium text-lg">

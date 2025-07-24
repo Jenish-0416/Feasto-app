@@ -29,13 +29,10 @@ export default function FoodCardGrid() {
   return (
     <div className=" py-12 ">
       {/* Heading and Filters */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 px-[50px]">
-        <h1 className="text-3xl font-bold text-black leading-snug">
-          Up to <span className="font-extrabold">−40%</span>{" "}
-          <span className="text-[#FC8A06]">🎉</span> Order.uk exclusive deals
-        </h1>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 px-4 md:px-12 min-h-[80px]">
+        <h1 className="text-2xl md:text-4xl font-bold">Up to -40% 🎊 Order.uk exclusive deals</h1>
 
-        <div className="flex gap-4 items-center flex-wrap">
+        <div className="flex flex-wrap gap-2 md:gap-4">
           {categories.map((cat) => (
             <button
               key={cat}

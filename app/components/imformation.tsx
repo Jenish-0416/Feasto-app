@@ -1,56 +1,96 @@
-import { FaClock, FaClipboardCheck, FaShippingFast } from "react-icons/fa";
+import { Truck, Phone, Clock } from "lucide-react";
 
-export default function InfoSection() {
+export default function Information() {
   return (
-    <div className="flex flex-col md:flex-row gap-4 md:gap-0 w-full max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden mt-10">
-      {/* Delivery Information */}
-      <div className="flex-1 bg-white p-8 space-y-4">
-        <div className="flex items-center gap-2 text-xl font-bold text-gray-900">
-          <FaShippingFast className="text-[#0a0a23]" />
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-0 bg-white  border-2 rounded-xl overflow-hidden shadow-md text-[18px]">
+      
+      <div className="bg-white px-10 py-10 space-y-5">
+        <div className="flex items-center gap-3 text-[#0A1026] font-bold text-[24px]">
+       <img src="public/assests/Tracking.svg" alt="" />
           Delivery information
         </div>
-        <div className="text-sm text-gray-800 space-y-1">
-          <p><b>Monday:</b> 12:00 AM–3:00 AM, 8:00 AM–3:00 AM</p>
-          <p><b>Tuesday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Wednesday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Thursday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Friday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Saturday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Sunday:</b> 8:00 AM–12:00 AM</p>
-          <p><b>Estimated time until delivery:</b> 20 min</p>
+
+        <div className="space-y-2">
+          <p>
+            <span className="font-bold">Monday:</span> 12:00 AM–3:00 AM, 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Tuesday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Wednesday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Thursday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Friday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Saturday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Sunday:</span> 8:00 AM–12:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Estimated time until delivery:</span> 20 min
+          </p>
         </div>
       </div>
 
-      {/* Contact Information */}
-      <div className="flex-1 bg-white p-8 space-y-4 border-t md:border-t-0 md:border-l border-gray-200">
-        <div className="flex items-center gap-2 text-xl font-bold text-gray-900">
-          <FaClipboardCheck className="text-[#0a0a23]" />
+    
+      <div className="bg-white px-10 py-10 space-y-5">
+        <div className="flex items-center gap-3 text-[#0A1026] font-bold text-[24px]">
+        <img src="public/assests/ID Verified.svg" alt="" />
           Contact information
         </div>
-        <div className="text-sm text-gray-800 space-y-2">
-          <p>
-            If you have allergies or other dietary restrictions, please contact the restaurant.
-            The restaurant will provide food-specific information upon request.
-          </p>
-          <p><b>Phone number</b><br />+934443-43</p>
-          <p><b>Website</b><br /><a className="text-blue-700" href="http://mcdonalds.uk/">http://mcdonalds.uk/</a></p>
+
+        <p className="text-[#2E2E2E]">
+          If you have allergies or other dietary <br /> restrictions, please contact the restaurant.
+          The <br/>  restaurant will provide food-specific <br /> information upon request.
+        </p>
+
+        <div className="space-y-3">
+          <div>
+            <p className="font-bold">Phone number</p>
+            <p className="text-blue-600 font-semibold">+934443-43703</p>
+          </div>
+          <div>
+            <p className="font-bold">Website</p>
+            <p className="text-blue-600 font-semibold">http://mcdonalds.uk/</p>
+          </div>
         </div>
       </div>
 
-      {/* Operational Times */}
-      <div className="flex-1 bg-[#0a0a23] text-white p-8 space-y-4 rounded-r-xl">
-        <div className="flex items-center gap-2 text-xl font-bold">
-          <FaClock />
+  
+      <div className="bg-[#0A1026] px-10 py-10 text-white space-y-5">
+        <div className="flex items-center gap-3 font-bold text-[24px]">
+        <img src="public/assests/Clock.svg" alt="" />
           Operational Times
         </div>
-        <div className="text-sm space-y-1">
-          <p><b>Monday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Tuesday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Wednesday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Thursday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Friday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Saturday:</b> 8:00 AM–3:00 AM</p>
-          <p><b>Sunday:</b> 8:00 AM–3:00 AM</p>
+
+        <div className="space-y-2 text-[18px]">
+          <p>
+            <span className="font-bold">Monday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Tuesday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Wednesday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Thursday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Friday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Saturday:</span> 8:00 AM–3:00 AM
+          </p>
+          <p>
+            <span className="font-bold">Sunday:</span> 8:00 AM–3:00 AM
+          </p>
         </div>
       </div>
     </div>

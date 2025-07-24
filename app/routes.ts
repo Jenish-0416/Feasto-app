@@ -5,6 +5,7 @@ export default [
     layout("routes/layout.tsx", [
         route("/landing", "routes/landing-page/page.tsx"), // Removed broken route
         route("/restaurants", "routes/restaurants-page/page.tsx"),
+        route("/ordering", "routes/ordering-page/page.tsx"),
     ]),
 ] satisfies RouteConfig;
 

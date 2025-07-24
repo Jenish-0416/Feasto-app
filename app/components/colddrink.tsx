@@ -59,7 +59,7 @@ export default function Drinks() {
             className="flex justify-between items-center bg-white rounded-2xl shadow-lg overflow-hidden transition duration-200 border border-gray-200 hover:shadow-xl"
           >
             {/* Left: Text */}
-            <div className="p-5 flex-1">
+            <div className="p-8 flex-1">
               <h3 className="text-lg font-semibold text-black mb-2">
                 {item.title}
               </h3>
@@ -68,14 +68,14 @@ export default function Drinks() {
             </div>
 
             {/* Right: Image with corner icon */}
-            <div className="relative w-[160px] h-[160px] flex-shrink-0 rounded-tr-2xl rounded-br-2xl overflow-hidden">
+            <div className="relative w-[180px] h-[180px] flex-shrink-0 rounded-tr-2xl rounded-br-2xl overflow-hidden right-5">
               <img
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 right-0">
-                <div className="w-[50px] h-[50px] bg-white/80 rounded-tl-[30px] flex items-center justify-center backdrop-blur-md">
+                <div className="w-[70px] h-[70px] bg-white/80 rounded-tl-[30px] flex items-center justify-center backdrop-blur-md">
                   <div className="w-8 h-8 bg-[#0A1026] rounded-full flex items-center justify-center">
                     <FaPlus className="text-white text-xs" />
                   </div>
