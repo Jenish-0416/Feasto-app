@@ -1,361 +1,415 @@
 {
-    "cardItems": [
-      {
-        "id": 1,
-        "image": "public/assests/food1.png",
-        "discount": "-40%",
-        "title": "Chef Burgers London",
-        "tag": "Restaurant"
-      },
-      {
-        "id": 2,
-        "image": "public/assests/food2.png",
-        "discount": "-20%",
-        "title": "Grand Ai Cafe London",
-        "tag": "Restaurant"
-      },
-      {
-        "id": 3,
-        "image": "public/assests/food3.png",
-        "discount": "-17%",
-        "title": "Butterbrot Caf’e London",
-        "tag": "Restaurant"
-      }
-    ],
-    "restaurant" : [
-        {
-          "image": "public/assests/mcd.png",
-          "alt": "Delicious dish 1",
-          "title": "McDonald’s London ",
-          "button": "Order Now",
-          "badgeColor": "bg-[#0A1026] text-white"
-        },
-        {
-          "image": "public/assests/papajohns.png",
-          "alt": "Delicious dish 2",
-          "title": "Papa Johns",
-      
-          "button": "Order Now",
-          "badgeColor": "bg-red-700 text-white"
-        },
-        {
-          "image": "public/assests/kfc.png",
-          "alt": "Delicious dish 3",
-          "title": "KFC West London",
-      
-          "button": "Order Now",
-          "badgeColor": "bg-green-700 text-white"
-        },
-        {
-          "image": "public/assests/texas.png",
-          "alt": "Delicious dish 3",
-          "title": "Texas Chicken",
-      
-          "button": "Order Now",
-          "badgeColor": "bg-green-700 text-white"
-        },
-        {
-          "image": "public/assests/burgerking.png",
-          "alt": "Delicious dish 3",
-          "title": "Burger King",
-      
-          "button": "Order Now",
-          "badgeColor": "bg-green-700 text-white"
-        },
-        {
-          "image": "public/assests/shaurma.png",
-          "alt": "Delicious dish 3",
-          "title": "Shaurma 1",
-          "button": "Order Now",
-          "badgeColor": "bg-green-700 text-white"
-        }
-      ],
-      "cards": [
-        {
-          "image": "/assests/burger.png",
-          "alt": "Burger",
-          "title": "Burgers & Fast food",
-          "description": "21 Restaurants"
-        },
-        {
-          "image": "/assests/salad.png",
-          "alt": "Salad",
-          "title": "Salads",
-          "description": "31 Restaurants"
-        },
-        {
-          "image": "/assests/pasta.png",
-          "alt": "Pasta",
-          "title": "Pasta & Casuals",
-          "description": "4 Restaurants"
-        },
-        {
-          "image": "/assests/pizza.png",
-          "alt": "Pizza",
-          "title": "Pizzas",
-          "description": "32 Restaurants"           
-        },
-        {
-          "image": "/assests/breakfast.png",
-          "alt": "Breakfast",
-          "title": "Breakfast",
-          "description": "3 Restaurants"
-        },
-        {
-          "image": "/assests/soup.png",
-          "alt": "Soup",
-          "title": "Soups",
-          "description": "32 Restaurants"
-        }
-      ],
-      "foodItems" : [
-        {
-          "title": "First Order Discount",
-          "tag": "McDonald’s East London",
-          "discount": "-20% OFF",
-          "image": "public/assests/firstorder.svg"
-        },
-        {
-          "title": "Vegan Discount",
-          "tag": "McDonald’s East London",
-          "discount": "-20% OFF",
-          "image": "public/assests/vegan.svg"
-        },
-        {
-          "title": "Free ice Cream Offer",
-          "tag": "McDonald’s East London",
-          "discount": "-100% OFF",
-          "image": "public/assests/freeicecream.svg"
-        }
-      ],
-      "burgers" : [
-        {
-          "title": "Royal Cheese Burger with extra Fries",
-          "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
-          "price": "GBP 23.10",
-          "image": "/assests/burger1.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "/assests/burger2.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "/assests/burger3.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description": "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drink",
-          "price": "GBP 23.10",
-          "image": "/assests/burger4.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drink",
-          "price": "GBP 23.10",
-          "image": "/assests/burger5.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "/assests/burger6.svg"
-        }
-    ],
-    "fries" : [
-        {
-          "title": "Royal Cheese Burger with extra Fries",
-          "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
-          "price": "GBP 23.10",
-          "image": "public/assests/fries1.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "public/assests/fries2.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "public/assests/fries3.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "public/assests/fries4.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "public/assests/fries5.svg"
-        },
-        {
-          "title": "The classics for 3",
-          "description":
-            "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-          "price": "GBP 23.10",
-          "image": "public/assests/fries6.svg"
-        }
-    ],
-    "drinks" : [
-        {
-            "title": "Royal Cheese Burger with extra Fries",
-            "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
-            "price": "GBP 23.10",
-            "image": "public/assests/drink1.svg"
-          },
-          {
-            "title": "The classics for 3",
-            "description":
-              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-            "price": "GBP 23.10",
-            "image": "public/assests/drink2.svg"
-          },
-          {
-            "title": "The classics for 3",
-            "description":
-              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-            "price": "GBP 23.10",
-            "image": "public/assests/drink3.svg"
-          },
-          {
-            "title": "The classics for 3",
-            "description":
-              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-            "price": "GBP 23.10",
-            "image": "public/assests/drink4.svg"
-          },
-          {
-            "title": "The classics for 3",
-            "description":
-              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-            "price": "GBP 23.10",
-            "image": "public/assests/drink5.svg"
-          },
-          {
-            "title": "The classics for 3",
-            "description":
-              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-            "price": "GBP 23.10",
-            "image": "public/assests/drink6.svg"
-          }
-    ],
-    "reviews" : [
-      {
-        "name": "St Glx",
-        "location": "South London",
-        "date": "24th September, 2023",
-        "review":
-          "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
-        "avatar": "public/assests/reviewdp.svg"       
-      },
-      {
-        "name": "St Glx",
-        "location": "South London",
-        "date": "24th September, 2023",
-        "review":
-          "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
-        "avatar": "public/assests/reviewdp.svg"
-      },
-      {
-        "name": "St Glx",
-        "location": "South London",
-        "date": "24th September, 2023",
-        "review":
-          "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
-        "avatar": "public/assests/reviewdp.svg"
-      }
-    ],
-    "food" : [
-      {
-        "title": "First Order Discount",
-        "tag": "Special Offer",
-        "discount": "-20%",
-        "image": "public/assests/girl.svg"
-      }
-    ],
-    "menuItem" : [
-      { "id": 1, "name": "Pizzas" },
-      { "id": 2, "name": "Garlic Bread" },
-      { "id": 3, "name": "Calzone" },
-      { "id": 4, "name": "Kebabs" },
-      { "id": 5, "name": "Pasta" },
-      { "id": 6, "name": "Burgers" },
-      { "id": 7, "name": "Wraps" },
-      { "id": 8, "name": "Salads" },
-      { "id": 9, "name": "Desserts" },
-      { "id": 10, "name": "Drinks" }
-    ],
-    "pizzaItems" : [
-      {
-        "title": "Farm House Xtreme Pizza",
-        "description":
-          "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks",
-        "image": "public/assests/orderpizza1.svg"
-      },
-      {
-        "title": "Tandoori Deluxe Pizza",
-        "description":
-          "Spicy chicken tikka, onion, green pepper, tandoori sauce, and mozzarella cheese",
-        "image": "public/assests/orderpizza3.svg"
-      },
-      {
-        "title": "Veggie Overload Pizza",
-        "description":
-          "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese",
-        "image": "public/assests/orderpizza33.svg"
-      }
-    ],
-    "sizes" : [
-      { "label": "Small", "price": "£21.90" },
-      { "label": "Medium", "price": "£25.90" },
-      { "label": "Large", "price": "£27.90" },
-      { "label": "XL Large with Sauces", "price": "£32.90" }
-    ],
-    "basketItems" : [
-      {
-      "qty": 1,
-      "price": "£27.90",
-      "name": "12 Vegitarian Pizza",
-      "desc": "No Mushrooms + green peppers",
-      "icon": "gray"
+  "cardItems": [
+    {
+      "id": "1",
+      "image": "public/assests/food1.png",
+      "discount": "-40%",
+      "title": "Chef Burgers London",
+      "tag": "Restaurant"
     },
     {
-      "qty": 1,
-      "price": "£17.90",
-      "name": "17 Tandoori Pizza",
-      "desc": "No Mushrooms + green peppers",
-      "icon": "gray"
+      "id": "2",
+      "image": "public/assests/food2.png",
+      "discount": "-20%",
+      "title": "Grand Ai Cafe London",
+      "tag": "Restaurant"
     },
     {
-      "qty": 2,
-      "price": "£4.90",
-      "name": "Coke Coca Cola",
-      "desc": "",
-      "icon": "red"
-    },
-    {
-      "qty": 1,
-      "price": "£27.90",
-      "name": "12 Vegitarian Pizza",
-      "desc": "No Mushrooms + green peppers",
-      "icon": "purple"
+      "id": "3",
+      "image": "public/assests/food3.png",
+      "discount": "-17%",
+      "title": "Butterbrot Caf’e London",
+      "tag": "Restaurant"
     }
-    ]
+  ],
+  "restaurant": [
+    {
+      "image": "public/assests/mcd.png",
+      "alt": "Delicious dish 1",
+      "title": "McDonald’s London ",
+      "button": "Order Now",
+      "badgeColor": "bg-[#0A1026] text-white",
+      "id": "8b27"
+    },
+    {
+      "image": "public/assests/papajohns.png",
+      "alt": "Delicious dish 2",
+      "title": "Papa Johns",
+      "button": "Order Now",
+      "badgeColor": "bg-red-700 text-white",
+      "id": "103d"
+    },
+    {
+      "image": "public/assests/kfc.png",
+      "alt": "Delicious dish 3",
+      "title": "KFC West London",
+      "button": "Order Now",
+      "badgeColor": "bg-green-700 text-white",
+      "id": "2cb3"
+    },
+    {
+      "image": "public/assests/texas.png",
+      "alt": "Delicious dish 3",
+      "title": "Texas Chicken",
+      "button": "Order Now",
+      "badgeColor": "bg-green-700 text-white",
+      "id": "d5b6"
+    },
+    {
+      "image": "public/assests/burgerking.png",
+      "alt": "Delicious dish 3",
+      "title": "Burger King",
+      "button": "Order Now",
+      "badgeColor": "bg-green-700 text-white",
+      "id": "a58a"
+    },
+    {
+      "image": "public/assests/shaurma.png",
+      "alt": "Delicious dish 3",
+      "title": "Shaurma 1",
+      "button": "Order Now",
+      "badgeColor": "bg-green-700 text-white",
+      "id": "5b5c"
+    }
+  ],
+  "cards": [
+    {
+      "image": "/assests/burger.png",
+      "alt": "Burger",
+      "title": "Burgers & Fast food",
+      "description": "21 Restaurants",
+      "id": "a676"
+    },
+    {
+      "image": "/assests/salad.png",
+      "alt": "Salad",
+      "title": "Salads",
+      "description": "31 Restaurants",
+      "id": "02f8"
+    },
+    {
+      "image": "/assests/pasta.png",
+      "alt": "Pasta",
+      "title": "Pasta & Casuals",
+      "description": "4 Restaurants",
+      "id": "099a"
+    },
+    {
+      "image": "/assests/pizza.png",
+      "alt": "Pizza",
+      "title": "Pizzas",
+      "description": "32 Restaurants",
+      "id": "f4d1"
+    },
+    {
+      "image": "/assests/breakfast.png",
+      "alt": "Breakfast",
+      "title": "Breakfast",
+      "description": "3 Restaurants",
+      "id": "3de2"
+    },
+    {
+      "image": "/assests/soup.png",
+      "alt": "Soup",
+      "title": "Soups",
+      "description": "32 Restaurants",
+      "id": "dfd1"
+    }
+  ],
+  "foodItems": [
+    {
+      "title": "First Order Discount",
+      "tag": "McDonald’s East London",
+      "discount": "-20% OFF",
+      "image": "public/assests/firstorder.svg",
+      "id": "35ca"
+    },
+    {
+      "title": "Vegan Discount",
+      "tag": "McDonald’s East London",
+      "discount": "-20% OFF",
+      "image": "public/assests/vegan.svg",
+      "id": "d8d5"
+    },
+    {
+      "title": "Free ice Cream Offer",
+      "tag": "McDonald’s East London",
+      "discount": "-100% OFF",
+      "image": "public/assests/freeicecream.svg",
+      "id": "2cfc"
+    }
+  ],
+  "burgers": [
+    {
+      "title": "Royal Cheese Burger with extra Fries",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+      "price": "GBP 23.10",
+      "image": "/assests/burger1.svg",
+      "id": "1646"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "/assests/burger2.svg",
+      "id": "c115"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "/assests/burger3.svg",
+      "id": "212d"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drink",
+      "price": "GBP 23.10",
+      "image": "/assests/burger4.svg",
+      "id": "4d97"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drink",
+      "price": "GBP 23.10",
+      "image": "/assests/burger5.svg",
+      "id": "4ce9"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "/assests/burger6.svg",
+      "id": "ac68"
+    }
+  ],
+  "fries": [
+    {
+      "title": "Royal Cheese Burger with extra Fries",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+      "price": "GBP 23.10",
+      "image": "public/assests/fries1.svg",
+      "id": "ae62"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/fries2.svg",
+      "id": "3fd6"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/fries3.svg",
+      "id": "89c1"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/fries4.svg",
+      "id": "edd7"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/fries5.svg",
+      "id": "c639"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/fries6.svg",
+      "id": "27b5"
+    }
+  ],
+  "drinks": [
+    {
+      "title": "Royal Cheese Burger with extra Fries",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+      "price": "GBP 23.10",
+      "image": "public/assests/drink1.svg",
+      "id": "92df"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/drink2.svg",
+      "id": "38f6"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/drink3.svg",
+      "id": "cd92"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/drink4.svg",
+      "id": "542f"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/drink5.svg",
+      "id": "96e2"
+    },
+    {
+      "title": "The classics for 3",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
+      "price": "GBP 23.10",
+      "image": "public/assests/drink6.svg",
+      "id": "f604"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "St Glx",
+      "location": "South London",
+      "date": "24th September, 2023",
+      "review": "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
+      "avatar": "public/assests/reviewdp.svg",
+      "id": "5be6"
+    },
+    {
+      "name": "St Glx",
+      "location": "South London",
+      "date": "24th September, 2023",
+      "review": "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
+      "avatar": "public/assests/reviewdp.svg",
+      "id": "e5a9"
+    },
+    {
+      "name": "St Glx",
+      "location": "South London",
+      "date": "24th September, 2023",
+      "review": "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
+      "avatar": "public/assests/reviewdp.svg",
+      "id": "cc50"
+    }
+  ],
+  "food": [
+    {
+      "title": "First Order Discount",
+      "tag": "Special Offer",
+      "discount": "-20%",
+      "image": "/assests/girl.svg",
+      "id": "3535"
+    }
+  ],
+  "menuItem": [
+    {
+      "id": "1",
+      "name": "Pizzas"
+    },
+    {
+      "id": "2",
+      "name": "Garlic Bread"
+    },
+    {
+      "id": "3",
+      "name": "Calzone"
+    },
+    {
+      "id": "4",
+      "name": "Kebabs"
+    },
+    {
+      "id": "5",
+      "name": "Pasta"
+    },
+    {
+      "id": "6",
+      "name": "Burgers"
+    },
+    {
+      "id": "7",
+      "name": "Wraps"
+    },
+    {
+      "id": "8",
+      "name": "Salads"
+    },
+    {
+      "id": "9",
+      "name": "Desserts"
+    },
+    {
+      "id": "10",
+      "name": "Drinks"
+    }
+  ],
+  "pizzaItems": [
+    {
+      "title": "Farm House Xtreme Pizza",
+      "description": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks",
+      "image": "/assests/orderpizza1.svg",
+      "id": "56a6"
+    },
+    {
+      "title": "Tandoori Deluxe Pizza",
+      "description": "Spicy chicken tikka, onion, green pepper, tandoori sauce, and mozzarella cheese",
+      "image": "/assests/orderpizza3.svg",
+      "id": "e328"
+    },
+    {
+      "title": "Veggie Overload Pizza",
+      "description": "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese",
+      "image": "/assests/orderpizza33.svg",
+      "id": "fe35"
+    }
+  ],
+  "sizes": [
+    {
+      "label": "Small",
+      "price": "£21.90",
+      "id": "f41f"
+    },
+    {
+      "label": "Medium",
+      "price": "£25.90",
+      "id": "f065"
+    },
+    {
+      "label": "Large",
+      "price": "£27.90",
+      "id": "5183"
+    },
+    {
+      "label": "XL Large with Sauces",
+      "price": "£32.90",
+      "id": "7fc0"
+    }
+  ],
+  "basketItems": [
+    {
+      "id": "56a6-5183",
+      "title": "Farm House Xtreme Pizza",
+      "price": "£27.90",
+      "image": "/assests/orderpizza1.svg",
+      "label": "Large",
+      "qty": 1,
+      "name": "Farm House Xtreme Pizza (Large)",
+      "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
+    },
+    {
+      "id": "fe35-5183",
+      "title": "Veggie Overload Pizza",
+      "price": "£27.90",
+      "image": "/assests/orderpizza33.svg",
+      "label": "Large",
+      "qty": 1,
+      "name": "Veggie Overload Pizza (Large)",
+      "desc": "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese"
+    }
+  ]
 }

@@ -31,7 +31,7 @@ export default function MenuNav() {
   const getfoodcard = async () => {
     try {
       const res = await api.get("/foodItems");
-      console.log("response===============================", res.data);
+      console.log("response", res.data);
       setFoodItems(res.data);
     } catch (err) {
       console.error("Failed to fetch jobs", err);
@@ -62,7 +62,7 @@ export default function MenuNav() {
       </div>
 
       {/* Grid of Cards */}
-      <div className="mt-6 flex flex-wrap gap-[20px]">
+      <div className="mt-6 flex flex-wrap gap-[15px]">
         {foodItems.map((item, index) => (
           <div
             key={index}

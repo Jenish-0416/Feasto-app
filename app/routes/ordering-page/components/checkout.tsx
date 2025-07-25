@@ -7,40 +7,57 @@ import { PiShoppingCartBold } from "react-icons/pi";
 import { TbShoppingBagCheck } from "react-icons/tb";
 import { api } from "~/lib/utils";
 
-type cardItem = {
-  id: number;
-  discount: string;
+type CardItem = {
+  id: string;
+  discount?: string;
   title: string;
-  tag: string;
-  description: string;
+  tag?: string;
+  description?: string;
   price: string;
   image: string;
   label: string;
   qty: number;
-  icon: string;
-  desc: string;
-  name: string;
+  icon?: string;
+  desc?: string;
+  name?: string;
 };
 
-const PizzaCard = ({ title, description, image, price, label }: cardItem) => {
-  const [size, setSizes] = useState<cardItem[]>([]);
+const PizzaCard = ({ id, title, description, image, price, label }: CardItem) => {
+  const [sizes, setSizes] = useState<CardItem[]>([]);
+  const [selectedSize, setSelectedSize] = useState("Small");
 
-  const getfoodcard = async () => {
+  const getFoodCard = async () => {
     try {
-      const res2 = await api.get("/sizes");
-
-      console.log("response", res2.data);
-      setSizes(res2.data);
+      const res = await api.get("/sizes");
+      setSizes(res.data);
     } catch (err) {
-      console.error("Failed to fetch jobs", err);
+      console.error("Failed to fetch sizes", err);
     }
   };
 
   useEffect(() => {
-    getfoodcard();
+    getFoodCard();
   }, []);
 
-  const [selectedSize, setSelectedSize] = useState("Small");
+  const addToBasket = async (size: CardItem) => {
+    try {
+      const basketItem = {
+        id: `${id}-${size.id}`, // Unique ID for basket item
+        title,
+        price: size.price,
+        image,
+        label: size.label,
+        qty: 1,
+        name: `${title} (${size.label})`,
+        desc: description,
+      };
+      await api.post("/basketItems", basketItem);
+      // Trigger a refresh of basket items in the Checkout component
+      // This could be optimized with a context or state management
+    } catch (err) {
+      console.error("Failed to add to basket", err);
+    }
+  };
 
   return (
     <div className="max-w bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between gap-6 mb-6">
@@ -55,10 +72,13 @@ const PizzaCard = ({ title, description, image, price, label }: cardItem) => {
         </div>
         <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-3">
-          {size.map((item, index) => (
+          {sizes.map((item) => (
             <div
-              key={index}
-              onClick={() => setSelectedSize(item.label)}
+              key={item.id}
+              onClick={() => {
+                setSelectedSize(item.label);
+                addToBasket(item);
+              }}
               className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer transition ${
                 selectedSize === item.label
                   ? "bg-black text-white border-black"
@@ -77,7 +97,6 @@ const PizzaCard = ({ title, description, image, price, label }: cardItem) => {
           ))}
         </div>
       </div>
-
       <div className="flex-shrink-0">
         <div className="w-[180px] h-[180px] rounded-full overflow-hidden">
           <img src={image} alt="Pizza" className="object-cover w-full h-full" />
@@ -108,10 +127,9 @@ const FoodCardGrid = () => {
           >
             -20%
           </div>
-
           <img
-            src={"public/assests/girl.svg"}
-            alt=""
+            src="/assests/girl.svg" // Fixed path
+            alt="First Order Discount"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end px-4 pb-3 z-10">
@@ -129,11 +147,9 @@ const FoodCardGrid = () => {
 };
 
 const Menu = () => {
-  const [menuItems, setMenuItems] = useState<{ id: number; name: string }[]>(
-    []
-  );
+  const [menuItems, setMenuItems] = useState<{ id: string; name: string }[]>([]);
 
-  const getmenuItems = async () => {
+  const getMenuItems = async () => {
     try {
       const res = await api.get("/menuItem");
       setMenuItems(res.data);
@@ -143,16 +159,16 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    getmenuItems();
+    getMenuItems();
   }, []);
+
   return (
     <div className="flex flex-col gap-4">
       <div className="w-64 bg-white border rounded-lg overflow-y-auto">
         <div className="flex items-center gap-2 p-6 text-lg font-bold">
-          <img src="public/assests/Restaurant Menu.svg" alt="menu icon" />
+          <img src="/assests/Restaurant Menu.svg" alt="menu icon" />
           <span>Menu</span>
         </div>
-
         <ul className="space-y-2 mb-6">
           {menuItems.map((item) => (
             <li
@@ -174,79 +190,91 @@ const Menu = () => {
 };
 
 const Checkout = () => {
-  const [basketItems, setBasketItems] = useState<cardItem[]>([]);
+  const [basketItems, setBasketItems] = useState<CardItem[]>([]);
 
   const getBasketItems = async () => {
     try {
       const res = await api.get("/basketItems");
-      console.log("response", res.data);
       setBasketItems(res.data);
     } catch (err) {
-      console.error("Failed to fetch jobs", err);
+      console.error("Failed to fetch basket items", err);
+    }
+  };
+
+  const deleteBasketItem = async (id: string) => {
+    try {
+      await api.delete(`/basketItems/${id}`);
+      setBasketItems((prev) => prev.filter((item) => item.id !== id));
+    } catch (err) {
+      console.error("Failed to delete basket item", err);
     }
   };
 
   useEffect(() => {
     getBasketItems();
   }, []);
+
+  const calculateSubtotal = () => {
+    return basketItems
+      .reduce((total, item) => {
+        const price = parseFloat(item.price.replace("£", ""));
+        return total + price * item.qty;
+      }, 0)
+      .toFixed(2);
+  };
+
   return (
     <div className="w-[280px] bg-white rounded-b-xl shadow-lg overflow-hidden">
       <div className="flex flex-col gap-5">
         <div className="bg-[#FF8000] text-white text-sm py-5 px-4 font-semibold rounded-lg flex items-center gap-2">
           <span className="text-2xl">🕒</span> Open until 3:00 AM
         </div>
-
         <div className="bg-green-700 text-white px-4 py-5 flex items-center rounded-t-lg gap-3 text-xl font-bold">
           <PiShoppingCartBold className="text-2xl" /> My Basket
         </div>
       </div>
-
-      <div className="divide-y px-1 bg-center ">
-        {basketItems.map((item, index) => (
-          <div key={index} className="flex justify-between px-3 items-center ">
-            <div className="flex items-center justify-center gap-3 py-3 ">
-              <div className="w-8 h-8 bg-[#FC8A06]  text-white text-sm font-bold rounded-full flex items-center justify-center">
+      <div className="divide-y px-1 bg-center">
+        {basketItems.map((item) => (
+          <div key={item.id} className="flex justify-between px-3 items-center">
+            <div className="flex items-center justify-center gap-3 py-3">
+              <div className="w-24 h-9 bg-[#FC8A06] text-white text-sm font-bold rounded-full flex items-center justify-center">
                 {item.qty}x
               </div>
               <div className="flex flex-col gap-1">
                 <div className="text-green-700 font-bold">{item.price}</div>
                 <div className="font-bold text-sm">{item.name}</div>
                 {item.desc && (
-                  <div className="text-xs text-gray-500 ">{item.desc}</div>
+                  <div className="text-xs text-gray-500">{item.desc}</div>
                 )}
               </div>
             </div>
-            <button>
-              <FiTrash2 className={`text-${item.icon}-500`} />
+            <button onClick={() => deleteBasketItem(item.id)}>
+              <FiTrash2 className="text-red-500" />
             </button>
           </div>
         ))}
-
         <div className="text-sm flex flex-col px-3 gap-3 py-3">
           <div className="flex justify-between font-bold">
-            <span>Sub Total:</span> <span>£127.90</span>
+            <span>Sub Total:</span> <span>£{calculateSubtotal()}</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Discounts:</span> <span>-3.00</span>
+            <span className="font-semibold">Discounts:</span> <span>-£3.00</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Delivery Fee:</span>{" "}
-            <span>2.50</span>
+            <span className="font-semibold">Delivery Fee:</span> <span>£2.50</span>
           </div>
         </div>
-
         <div className="mt-3 bg-[#FC8A06CC] text-white font-bold py-2 px-4 text-center rounded">
-          Total to pay <span className="text-2xl">£127.90</span>
+          Total to pay{" "}
+          <span className="text-2xl">
+            £{(parseFloat(calculateSubtotal()) - 3.00 + 2.50).toFixed(2)}
+          </span>
         </div>
-
         <div className="space-y-3 pt-4">
           <div className="flex items-center justify-between border rounded-full px-3 py-2">
-            <span className="text-sm text-gray-500 ">
-              Choose your free item..
-            </span>
+            <span className="text-sm text-gray-500">Choose your free item..</span>
             <IoIosArrowDown />
           </div>
-
           <div className="flex items-center justify-between border rounded-full px-3 py-2">
             <input
               className="w-full outline-none text-sm"
@@ -255,21 +283,18 @@ const Checkout = () => {
             <IoIosArrowForward className="text-green-500" />
           </div>
         </div>
-
         <div className="flex justify-between pt-4 gap-2">
           <div className="border rounded-lg flex flex-col items-center justify-center p-3 text-xs w-1/2">
             <MdOutlineDeliveryDining className="text-2xl text-green-700" />
             <div className="font-bold">Delivery</div>
             <div className="text-gray-400">Starts at 17:50</div>
           </div>
-
           <div className="border rounded-lg flex flex-col items-center justify-center p-3 text-xs w-1/2">
             <TbShoppingBagCheck className="text-2xl text-green-700" />
             <div className="font-bold text-gray-500">Collection</div>
             <div className="text-gray-400">Starts at 16:50</div>
           </div>
         </div>
-
         <button className="w-full mt-4 bg-green-700 text-white py-3 rounded text-lg font-bold flex items-center justify-center gap-2">
           <IoIosArrowForward /> Checkout!
         </button>
@@ -279,39 +304,39 @@ const Checkout = () => {
 };
 
 const MainPage = () => {
-  const [pizzaItems, setPizzaItems] = useState<cardItem[]>([]);
+  const [pizzaItems, setPizzaItems] = useState<CardItem[]>([]);
 
-  const getpizzaItems = async () => {
+  const getPizzaItems = async () => {
     try {
       const res = await api.get("/pizzaItems");
-      console.log("response", res.data);
       setPizzaItems(res.data);
     } catch (err) {
-      console.error("Failed to fetch jobs", err);
+      console.error("Failed to fetch pizza items", err);
     }
   };
 
   useEffect(() => {
-    getpizzaItems();
+    getPizzaItems();
   }, []);
+
   return (
     <div className="flex bg-[#f7f7f7] min-h-screen">
       <Menu />
       <div className="flex-1 p-6 overflow-y-auto">
         <h1 className="text-xl font-bold mb-4">Browse Menu</h1>
-        {pizzaItems.map((pizza, index) => (
+        {pizzaItems.map((pizza) => (
           <PizzaCard
-            key={index}
+            key={pizza.id}
+            id={pizza.id}
             title={pizza.title}
             description={pizza.description}
             image={pizza.image}
-            price={pizza.price}
-            label={pizza.label}
-            qty={pizza.qty}
-            icon={pizza.icon}
+            price={pizza.price || "£0.00"}
+            label={pizza.label || "Unknown"}
+            qty={pizza.qty || 1}
+            name={pizza.name || pizza.title}
             desc={pizza.desc}
-            name={pizza.name}
-            id={pizza.id}
+            icon={pizza.icon}
             discount={pizza.discount}
             tag={pizza.tag}
           />
