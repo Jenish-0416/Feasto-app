@@ -3,35 +3,31 @@ import { Button } from "~/components/ui/button";
 import { useEffect, useState } from "react";
 import { api } from "~/lib/utils";
 
-type JobItem = {
-    id: number;
-    image: string;
-    alt: string;
-    title: string;
-    button: string;
-    badgeColor: string;
-  };
-
-
+type RestaurantItem = {
+  id: number;
+  image: string;
+  alt: string;
+  title: string;
+  button: string;
+  badgeColor: string;
+};
 
 export default function Cardcus() {
+  const [jobs, setJobs] = useState<RestaurantItem[]>([]);
 
+  const getRestaurant = async () => {
+    try {
+      const res = await api.get("/restaurant");
+      console.log("34567", res.data);
+      setJobs(res.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
 
-    const [jobs, setJobs] = useState<JobItem[]>([]);
-  
-    const getJobs = async () => {
-      try {
-        const res = await api.get("/cards");
-        console.log("response", res.data);
-        setJobs(res.data);
-      } catch (err) {
-        console.error("Failed to fetch jobs", err);
-      }
-    };
-  
-    useEffect(() => {
-      getJobs();
-    }, []);
+  useEffect(() => {
+    getRestaurant();
+  }, []);
 
   return (
     <div className=" mt-[56px] mb-[51px]">

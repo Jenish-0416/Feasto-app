@@ -1,16 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import { api } from "~/lib/utils";
 
-
+type FoodItem = {
+  title: string;
+  tag: string;
+  discount: string;
+  image: string;
+};
 
 const categories = [
   "Offers",
   "Burgers",
   "Fries",
   "Snacks",
-  "Salads", 
+  "Salads",
   "Cold drinks",
   "Happy Meal®",
   "Desserts",
@@ -19,28 +25,23 @@ const categories = [
   "Orbit®",
 ];
 
-const foodItems = [
-  {
-    title: "First Order Discount",
-    tag: "McDonald’s East London",
-    discount: "-20% OFF",
-    image: "public/assests/firstorder.svg",
-  },
-  {
-    title: "Vegan Discount",
-    tag: "McDonald’s East London",
-    discount: "-20% OFF",
-    image: "public/assests/vegan.svg",
-  },
-  {
-    title: "Free ice Cream Offer",
-    tag: "McDonald’s East London",
-    discount: "-100% OFF",
-    image: "public/assests/freeicecream.svg",
-  },
-];
-
 export default function MenuNav() {
+  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+
+  const getfoodcard = async () => {
+    try {
+      const res = await api.get("/foodItems");
+      console.log("response===============================", res.data);
+      setFoodItems(res.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
+
+  useEffect(() => {
+    getfoodcard();
+  }, []);
+
   const [activeCategory, setActiveCategory] = useState("Offers");
 
   return (
@@ -113,7 +114,6 @@ export default function MenuNav() {
               <div className="w-[97px] h-[89px] bg-white/80 rounded-tl-[40px] flex items-center justify-center backdrop-blur-sm">
                 <div className="w-[40px] h-[40px] rounded-full bg-[#0A1026] flex items-center justify-center">
                   <FaPlus className="text-white text-base" />
-              
                 </div>
               </div>
             </div>

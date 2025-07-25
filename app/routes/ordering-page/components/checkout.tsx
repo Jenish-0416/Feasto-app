@@ -1,74 +1,46 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { MdOutlineDeliveryDining } from "react-icons/md";
 import { PiShoppingCartBold } from "react-icons/pi";
 import { TbShoppingBagCheck } from "react-icons/tb";
+import { api } from "~/lib/utils";
 
-// Dummy categories and foodItems
-const foodItems = [
-  {
-    title: "First Order Discount",
-    tag: "Special Offer",
-    discount: "-20%",
-    image: "public/assests/girl.svg",
-  },
-];
-
-const menuItems = [
-  "Pizzas",
-  "Garlic Bread",
-  "Calzone",
-  "Kebabs",
-  "Salads",
-  "Cold drinks",
-  "Happy Meal®",
-  "Desserts",
-  "Hot drinks",
-  "Sauces",
-  "Orbit®",
-];
-
-// Multiple pizza card data
-const pizzaItems = [
-  {
-    title: "Farm House Xtreme Pizza",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks",
-    image: "public/assests/orderpizza1.svg",
-  },
-  {
-    title: "Tandoori Deluxe Pizza",
-    description:
-      "Spicy chicken tikka, onion, green pepper, tandoori sauce, and mozzarella cheese",
-    image: "public/assests/orderpizza3.svg",
-  },
-  {
-    title: "Veggie Overload Pizza",
-    description:
-      "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese",
-    image: "public/assests/orderpizza33.svg",
-  },
-];
-
-const PizzaCard = ({
-  title,
-  description,
-  image,
-}: {
+type cardItem = {
+  id: number;
+  discount: string;
   title: string;
+  tag: string;
   description: string;
+  price: string;
   image: string;
-}) => {
-  const [selectedSize, setSelectedSize] = useState("Small");
+  label: string;
+  qty: number;
+  icon: string;
+  desc: string;
+  name: string;
+};
 
-  const sizes = [
-    { label: "Small", price: "£21.90" },
-    { label: "Medium", price: "£25.90" },
-    { label: "Large", price: "£27.90" },
-    { label: "XL Large with Sauces", price: "£32.90" },
-  ];
+const PizzaCard = ({ title, description, image, price, label }: cardItem) => {
+  const [size, setSizes] = useState<cardItem[]>([]);
+
+  const getfoodcard = async () => {
+    try {
+      const res2 = await api.get("/sizes");
+
+      console.log("response", res2.data);
+      setSizes(res2.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
+
+  useEffect(() => {
+    getfoodcard();
+  }, []);
+
+  const [selectedSize, setSelectedSize] = useState("Small");
 
   return (
     <div className="max-w bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between gap-6 mb-6">
@@ -83,15 +55,19 @@ const PizzaCard = ({
         </div>
         <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-3">
-          {sizes.map((item) => (
+          {size.map((item, index) => (
             <div
-              key={item.label}
+              key={index}
               onClick={() => setSelectedSize(item.label)}
               className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer transition ${
                 selectedSize === item.label
                   ? "bg-black text-white border-black"
                   : "bg-white border-gray-300"
-              } ${item.label === "XL Large with Sauces" ? "w-[300px]" : "w-[180px]"}`}
+              } ${
+                item.label === "XL Large with Sauces"
+                  ? "w-[300px]"
+                  : "w-[180px]"
+              }`}
             >
               <span className="font-semibold">{item.label}</span>
               <span className="bg-green-600 text-white px-3 py-1 rounded-md text-sm font-semibold">
@@ -104,11 +80,7 @@ const PizzaCard = ({
 
       <div className="flex-shrink-0">
         <div className="w-[180px] h-[180px] rounded-full overflow-hidden">
-          <img
-            src={image}
-            alt="Pizza"
-            className="object-cover w-full h-full"
-          />
+          <img src={image} alt="Pizza" className="object-cover w-full h-full" />
         </div>
       </div>
     </div>
@@ -119,47 +91,59 @@ const FoodCardGrid = () => {
   return (
     <div className="pt-0">
       <div className="flex flex-col gap-4 px-2 pb-4">
-        {foodItems.map((item, index) => (
+        <div
+          className="relative rounded-lg overflow-hidden shadow-md group"
+          style={{ width: "100%", height: "200px" }}
+        >
           <div
-            key={index}
-            className="relative rounded-lg overflow-hidden shadow-md group"
-            style={{ width: "100%", height: "200px" }}
+            className="absolute bg-[#0A1026] text-white text-xs font-bold z-10 flex items-center justify-center"
+            style={{
+              width: "40px",
+              height: "40px",
+              top: "1px",
+              left: "10px",
+              borderBottomRightRadius: "10px",
+              borderBottomLeftRadius: "10px",
+            }}
           >
-            <div
-              className="absolute bg-[#0A1026] text-white text-xs font-bold z-10 flex items-center justify-center"
-              style={{
-                width: "40px",
-                height: "40px",
-                top: "1px",
-                left: "10px",
-                borderBottomRightRadius: "10px",
-                borderBottomLeftRadius: "10px",
-              }}
-            >
-              {item.discount}
-            </div>
-
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end px-4 pb-3 z-10">
-              <span className="text-[#FC8A06] text-xs font-medium mb-1">
-                {item.tag}
-              </span>
-              <h2 className="text-white text-sm font-bold leading-tight">
-                {item.title}
-              </h2>
-            </div>
+            -20%
           </div>
-        ))}
+
+          <img
+            src={"public/assests/girl.svg"}
+            alt=""
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end px-4 pb-3 z-10">
+            <span className="text-[#FC8A06] text-xs font-medium mb-1">
+              Special Offer
+            </span>
+            <h2 className="text-white text-sm font-bold leading-tight">
+              First Order Discount
+            </h2>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-const Menu: React.FC = () => {
+const Menu = () => {
+  const [menuItems, setMenuItems] = useState<string[]>([]);
+
+  const getmenuItems = async () => {
+    try {
+      const res = await api.get("/menuItem");
+      console.log("response", res.data);
+      setMenuItems(res.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
+
+  useEffect(() => {
+    getmenuItems();
+  }, []);
   return (
     <div className="flex flex-col gap-4">
       <div className="w-64 bg-white border rounded-lg overflow-y-auto">
@@ -189,11 +173,23 @@ const Menu: React.FC = () => {
 };
 
 const Checkout = () => {
+  const [basketItems, setBasketItems] = useState<cardItem[]>([]);
+
+  const getBasketItems = async () => {
+    try {
+      const res = await api.get("/basketItems");
+      console.log("response", res.data);
+      setBasketItems(res.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
+
+  useEffect(() => {
+    getBasketItems();
+  }, []);
   return (
     <div className="w-[280px] bg-white rounded-b-xl shadow-lg overflow-hidden">
-
-
-
       <div className="flex flex-col gap-5">
         <div className="bg-[#FF8000] text-white text-sm py-5 px-4 font-semibold rounded-lg flex items-center gap-2">
           <span className="text-2xl">🕒</span> Open until 3:00 AM
@@ -204,39 +200,8 @@ const Checkout = () => {
         </div>
       </div>
 
-     
-
       <div className="divide-y px-1 bg-center ">
-        {[
-          {
-            qty: 1,
-            price: "£27.90",
-            name: '12" Vegitarian Pizza',
-            desc: "No Mushrooms + green peppers",
-            icon: "gray",
-          },
-          {
-            qty: 1,
-            price: "£17.90",
-            name: '17" Tandoori Pizza',
-            desc: "No Mushrooms + green peppers",
-            icon: "gray",
-          },
-          {
-            qty: 2,
-            price: "£4.90",
-            name: "Coke Coca Cola",
-            desc: "",
-            icon: "red",
-          },
-          {
-            qty: 1,
-            price: "£27.90",
-            name: '12" Vegitarian Pizza',
-            desc: "No Mushrooms + green peppers",
-            icon: "purple",
-          },
-        ].map((item, index) => (
+        {basketItems.map((item, index) => (
           <div key={index} className="flex justify-between px-3 items-center ">
             <div className="flex items-center justify-center gap-3 py-3 ">
               <div className="w-8 h-8 bg-[#FC8A06]  text-white text-sm font-bold rounded-full flex items-center justify-center">
@@ -307,14 +272,27 @@ const Checkout = () => {
         <button className="w-full mt-4 bg-green-700 text-white py-3 rounded text-lg font-bold flex items-center justify-center gap-2">
           <IoIosArrowForward /> Checkout!
         </button>
-      </div> 
-        
-   
+      </div>
     </div>
   );
 };
 
 const MainPage = () => {
+  const [pizzaItems, setPizzaItems] = useState<cardItem[]>([]);
+
+  const getpizzaItems = async () => {
+    try {
+      const res = await api.get("/pizzaItems");
+      console.log("response", res.data);
+      setPizzaItems(res.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
+
+  useEffect(() => {
+    getpizzaItems();
+  }, []);
   return (
     <div className="flex bg-[#f7f7f7] min-h-screen">
       <Menu />
@@ -326,6 +304,15 @@ const MainPage = () => {
             title={pizza.title}
             description={pizza.description}
             image={pizza.image}
+            price={pizza.price}
+            label={pizza.label}
+            qty={pizza.qty}
+            icon={pizza.icon}
+            desc={pizza.desc}
+            name={pizza.name}
+            id={pizza.id}
+            discount={pizza.discount}
+            tag={pizza.tag}
           />
         ))}
       </div>
@@ -335,4 +322,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-

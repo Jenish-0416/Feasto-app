@@ -2,58 +2,41 @@
 
 import React from "react";
 import { FaPlus } from "react-icons/fa";
+import { api } from "~/lib/utils";
+import { useEffect, useState } from "react";
 
-const burgers = [
-  {
-    title: "Royal Cheese Burger with extra Fries",
-    description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
-    price: "GBP 23.10",
-    image: "/assests/burger1.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "/assests/burger2.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "/assests/burger3.svg",
-  },
-  {
-    title: "The classics for 3",
-    description: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drink",
-    price: "GBP 23.10",
-    image: "/assests/burger4.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drink",
-    price: "GBP 23.10",
-    image: "/assests/burger5.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "/assests/burger6.svg",
-  }
-  // Add more as needed
-];
+type Item = {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+  price: string;
+};
 
 export default function Burger() {
+
+  const [jobs, setJobs] = useState<Item[]>([]);
+  
+    const getfoodcard = async () => {
+      try {
+        const res = await api.get("/burgers");
+        console.log("response", res.data);
+        setJobs(res.data);
+      } catch (err) {
+        console.error("Failed to fetch jobs", err);
+      }
+    };
+  
+    useEffect(() => {
+      getfoodcard();
+    }, []);
+  
   return (
     <div className="bg-white py-10 px-6">
       <h2 className="text-3xl font-bold mb-6">Burgers</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {burgers.map((item, index) => (
+        {jobs.map((item, index) => (
           <div
             key={index}
             className={`flex justify-between items-center bg-white rounded-xl shadow-md overflow-hidden relative hover:shadow-lg transition-shadow duration-200 border ${

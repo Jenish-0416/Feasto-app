@@ -1,59 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import { api } from "~/lib/utils";
 
-const fries = [
-  {
-    title: "Royal Cheese Burger with extra Fries",
-    description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
-    price: "GBP 23.10",
-    image: "public/assests/fries1.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "public/assests/fries2.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "public/assests/fries3.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "public/assests/fries4.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "public/assests/fries5.svg",
-  },
-  {
-    title: "The classics for 3",
-    description:
-      "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-    price: "GBP 23.10",
-    image: "public/assests/fries6.svg",
-  },
-];
+type fries = {
+    title: string;
+    description: string;
+    price: string;
+    image: string;
+};
 
 export default function Fries() {
+
+  const [jobs, setJobs] = useState<fries[]>([]);
+  
+    const getfoodcard = async () => {
+      try {
+        const res = await api.get("/fries");
+        console.log("response", res.data);
+        setJobs(res.data);
+      } catch (err) {
+        console.error("Failed to fetch jobs", err);
+      }
+    };
+  
+    useEffect(() => {
+      getfoodcard();
+    }, []);
   return (
     <div className="bg-white py-10 px-6">
       <h2 className="text-4xl font-extrabold text-[#ff7a00] mb-8">Fries</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-        {fries.map((item, index) => (
+        {jobs.map((item, index) => (
           <div
             key={index}
             className="flex justify-between items-center bg-white rounded-2xl shadow-lg overflow-hidden transition duration-200 border border-gray-200 hover:shadow-xl"

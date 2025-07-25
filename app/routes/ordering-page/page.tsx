@@ -17,6 +17,7 @@ export default function page() {
       <CustomerReviews />
       <br />
       <Cardcus />
+      
     </div>
   );
 }

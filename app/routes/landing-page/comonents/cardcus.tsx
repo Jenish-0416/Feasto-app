@@ -3,27 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { api } from "~/lib/utils";
 
-const foodItems = [
-  {
-    image: "public/assests/food1.png",
-    discount: "-40%",
-    title: "Chef Burgers London",
-    tag: "Restaurant",
-  },
-  {
-    image: "public/assests/food2.png",
-    discount: "-20%",
-    title: "Grand Ai Cafe London",
-    tag: "Restaurant",
-  },
-  {
-    image: "public/assests/food3.png",
-    discount: "-17%",
-    title: "Butterbrot Caf’e London",
-    tag: "Restaurant",
-  },
-];
-type JobItem = {
+
+type cardItem = {
   id: number;
   image: string;
   discount: string;
@@ -36,11 +17,11 @@ const categories = ["Vegan", "Sushi", "Pizza & Fast food", "others"];
 export default function FoodCardGrid() {
 
 
-  const [jobs, setJobs] = useState<JobItem[]>([]);
+  const [jobs, setJobs] = useState<cardItem[]>([]);
 
-  const getJobs = async () => {
+  const getfoodcard = async () => {
     try {
-      const res = await api.get("/foodItems");
+      const res = await api.get("/cardItems");
       console.log("response", res.data);
       setJobs(res.data);
     } catch (err) {
@@ -49,7 +30,7 @@ export default function FoodCardGrid() {
   };
 
   useEffect(() => {
-    getJobs();
+    getfoodcard();
   }, []);
 
   return (

@@ -1,9 +1,32 @@
 "use client";
 
 import React from "react";
-import { cards, type FoodCategoryCard } from "../../../lib/constants";
-
+import { useState } from "react";
+import { api } from "~/lib/utils";
+import { useEffect } from "react";
+type FoodCategoryCard = {
+  image: string;
+  alt: string;
+  title: string;
+  description: string;
+}
 export default function CategoryCards() {
+  const [cards, setCards] = useState<FoodCategoryCard[]>([]);
+    
+      const getCards = async () => {
+        try {
+          const res = await api.get("/cards");
+          console.log("response", res.data);
+          setCards(res.data);
+        } catch (err) {
+          console.error("Failed to fetch cards", err);
+        }
+      };
+    
+      useEffect(() => {
+        getCards();
+      }, []);
+  
   return (
     <div className="flex flex-col items-start justify-center  ">
       <h2 className="text-[28px] font-bold text-black mb-8">

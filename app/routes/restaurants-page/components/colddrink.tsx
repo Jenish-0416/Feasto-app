@@ -1,53 +1,35 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import { api } from "~/lib/utils";
 
-const drinks = [
-    {
-        title: "Royal Cheese Burger with extra Fries",
-        description: "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
-        price: "GBP 23.10",
-        image: "public/assests/drink1.svg",
-      },
-      {
-        title: "The classics for 3",
-        description:
-          "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-        price: "GBP 23.10",
-        image: "public/assests/drink2.svg",
-      },
-      {
-        title: "The classics for 3",
-        description:
-          "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-        price: "GBP 23.10",
-        image: "public/assests/drink3.svg",
-      },
-      {
-        title: "The classics for 3",
-        description:
-          "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-        price: "GBP 23.10",
-        image: "public/assests/drink4.svg",
-      },
-      {
-        title: "The classics for 3",
-        description:
-          "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-        price: "GBP 23.10",
-        image: "public/assests/drink5.svg",
-      },
-      {
-        title: "The classics for 3",
-        description:
-          "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries , 3 cold drinks",
-        price: "GBP 23.10",
-        image: "public/assests/drink6.svg",
-      },
-];
+type drinksItem = {
+    title: string;
+    description: string;
+    price: string;
+    image: string;
+};
+
 
 export default function Drinks() {
+   
+  const [drinks, setDrinks] = useState<drinksItem[]>([]);
+
+  const getdrinks = async () => {
+    try {
+      const res = await api.get("/drinks");
+      console.log("response", res.data);
+      setDrinks(res.data);
+    } catch (err) {
+      console.error("Failed to fetch jobs", err);
+    }
+  };
+
+  useEffect(() => {
+    getdrinks();1
+  }, []);
+  
   return (
     <div className="bg-white py-10 px-6">
       <h2 className="text-4xl font-extrabold text-[#ff7a00] mb-8">Drinks</h2>

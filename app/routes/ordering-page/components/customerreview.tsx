@@ -1,34 +1,34 @@
+import { useEffect, useState } from "react";
 import { FaStar, FaRegClock } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { api } from "~/lib/utils";
 
-const reviews = [
-  {
-    name: "St Glx",
-    location: "South London",
-    date: "24th September, 2023",
-    review:
-      "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
-    avatar: "public/assests/reviewdp.svg",
-  },
-  {
-    name: "St Glx",
-    location: "South London",
-    date: "24th September, 2023",
-    review:
-      "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
-    avatar: "public/assests/reviewdp.svg",
-  },
-  {
-    name: "St Glx",
-    location: "South London",
-    date: "24th September, 2023",
-    review:
-      "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
-    avatar: "public/assests/reviewdp.svg",
-  },
-];
+type reviewItem = {
+  name: string;
+  location: string;
+  date: string;
+  review: string;
+  avatar: string;
+};
 
 export default function CustomerReviews() {
+
+    const [reviews, setReviews] = useState<reviewItem[]>([]);
+  
+    const getfoodcard = async () => {
+      try {
+        const res = await api.get("/reviews");
+        console.log("response", res.data);
+        setReviews(res.data);
+      } catch (err) {
+        console.error("Failed to fetch jobs", err);
+      }
+    };
+  
+    useEffect(() => {
+      getfoodcard();
+    }, []);
+
   return (
     <div className="relative bg-[#d6d6d6] pt-10 pb-[100px] md:px-[100px] w-full ">
      
