@@ -129,15 +129,16 @@ const FoodCardGrid = () => {
 };
 
 const Menu = () => {
-  const [menuItems, setMenuItems] = useState<string[]>([]);
+  const [menuItems, setMenuItems] = useState<{ id: number; name: string }[]>(
+    []
+  );
 
   const getmenuItems = async () => {
     try {
       const res = await api.get("/menuItem");
-      console.log("response", res.data);
       setMenuItems(res.data);
-    } catch (err) {
-      console.error("Failed to fetch jobs", err);
+    } catch (error) {
+      console.error("Error fetching menu items:", error);
     }
   };
 
@@ -153,16 +154,16 @@ const Menu = () => {
         </div>
 
         <ul className="space-y-2 mb-6">
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <li
-              key={index}
+              key={item.id}
               className={`px-6 py-4 text-sm font-bold cursor-pointer ${
-                item === "Pizzas"
+                item.name === "Pizzas"
                   ? "bg-[#0C0C0C] text-white"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
-              {item}
+              {item.name}
             </li>
           ))}
         </ul>

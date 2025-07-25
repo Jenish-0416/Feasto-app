@@ -12,7 +12,7 @@ type RestaurantItem = {
   badgeColor: string;
 };
 
-export default function Cardcus() {
+export default function Brands() {
   const [jobs, setJobs] = useState<RestaurantItem[]>([]);
 
   const getRestaurant = async () => {
@@ -45,7 +45,7 @@ export default function Cardcus() {
       >
         Popular Restaurants
       </h2>
-      <div className="flex flex-wrap justify-start gap-4">
+      <div className="flex flex-wrap justify-start gap-3">
         {jobs.map((job, idx) => (
           <Card
             key={idx}

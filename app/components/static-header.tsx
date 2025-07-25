@@ -1,40 +1,45 @@
 "use client";
 
 import { MapPin, User, Menu } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export default function StaticHeader() {
+  const navigate = useNavigate();
+
   const navItems = [
-    "Home",
-    "Browse Menu",
-    "Special Offers",
-    "Restaurants",
-    "Track Order",
+    { name: "Home", path: "/" },
+    { name: "Browse Menu", path: "/menu" },
+    { name: "Special Offers", path: "special-offer" },
+    { name: "Restaurants", path: "/restaurants" },
+    { name: "Order", path: "/ordering" },
   ];
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <div className="w-full font-sans">
-      {/* --- MOBILE HEADER --- */}
+      {/* Mobile Header */}
       <div className="md:hidden w-full bg-white shadow-md font-sans text-sm rounded-b-2xl overflow-hidden">
-        {/* Top Row */}
         <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
-          {/* Logo */}
           <img
             src="/assests/logo1.svg"
             alt="Logo"
             className="h-6 object-contain"
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
           />
-
-          {/* Cart Summary */}
           <div className="flex items-center bg-[#028643] text-white rounded px-2 py-1">
-            <img src="/assests/shopicon.svg" alt="Basket" className="h-4 mr-1" />
+            <img
+              src="/assests/shopicon.svg"
+              alt="Basket"
+              className="h-4 mr-1"
+            />
             <span className="text-sm font-bold">GBP 79.89</span>
           </div>
-
-          {/* Menu Icon */}
           <Menu className="w-6 h-6 text-black" />
         </div>
-
-        {/* Profile Row */}
         <div className="flex items-center justify-between px-4 py-2 bg-[#FC8A06] text-white">
           <div className="flex items-center gap-2">
             <img
@@ -47,16 +52,13 @@ export default function StaticHeader() {
         </div>
       </div>
 
-      {/* --- DESKTOP HEADER --- */}
+      {/* Top Bar */}
       <div className="hidden md:flex items-center justify-between text-sm border-2 border-[#0000001A] bg-[#FAFAFA] rounded-b-2xl shadow-none mx-[100px] h-16">
-        {/* Promo */}
         <div className="flex items-center space-x-1 p-6">
           <span>🌟</span>
           <span>Get 5% Off your first order,</span>
           <span className="font-semibold text-[#FC8A06]">Promo: ORDER5</span>
         </div>
-
-        {/* Location */}
         <div className="flex items-center space-x-1 text-sm p-6">
           <MapPin className="w-4 h-4" />
           <span>
@@ -66,15 +68,9 @@ export default function StaticHeader() {
             Change Location
           </span>
         </div>
-
-        {/* Cart Summary */}
         <div className="flex w-96 h-full bg-[#028643] rounded-b-2xl overflow-hidden">
           <div className="flex flex-1 items-center justify-center">
-            <img
-              src="/assests/shopicon.svg"
-              className="h-[35px]"
-              alt="shop"
-            />
+            <img src="/assests/shopicon.svg" className="h-[35px]" alt="shop" />
           </div>
           <div className="w-px bg-white/50 h-4/5 self-center" />
           <div className="flex flex-1 items-center justify-center">
@@ -93,27 +89,31 @@ export default function StaticHeader() {
         </div>
       </div>
 
-      {/* Navigation Bar (only on desktop) */}
+      {/* Navbar */}
       <div className="hidden md:flex items-center justify-between px-6 py-9 mx-[70px] bg-white">
         <div>
           <img
             src="/assests/logo1.svg"
             alt="logo"
-            className="w-[215px] h-[53px]"
+            className="w-[215px] h-[53px] cursor-pointer"
+            onClick={() => navigate("/")}
           />
         </div>
         <div className="flex gap-[20px]">
           {navItems.map((item) => (
             <span
-              key={item}
-              className={`text-lg px-[34px] py-[9px] rounded-full font-medium text-white`}
-              style={{ backgroundColor: "#FC8A06" }}
+              key={item.name}
+              onClick={() => handleNavigation(item.path)}
+              className="text-lg px-[34px] py-[9px] rounded-full font-medium text-black hover:bg-[#FC8A06] hover:text-white transition-all duration-200 cursor-pointer"
             >
-              {item}
+              {item.name}
             </span>
           ))}
         </div>
-        <div className="flex items-center gap-3 bg-black text-white px-[26px] py-4 rounded-full text-lg">
+        <div
+          className="flex items-center gap-3 bg-black text-white px-[26px] py-4 rounded-full text-lg cursor-pointer"
+          onClick={() => navigate("/login")}
+        >
           <User className="w-5 h-5 text-[#FC8A06]" />
           <span>Login/Signup</span>
         </div>

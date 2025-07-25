@@ -54,7 +54,7 @@ export default function FoodCardGrid() {
       </div>
 
       {/* Grid of Cards */}
-      <div className="flex flex-wrap gap-5 justify-center px-[1px]">
+      <div className="flex flex-wrap gap-3 justify-center px-[1px]">
         {jobs.map((item, index) => (
           <div
             key={index}
