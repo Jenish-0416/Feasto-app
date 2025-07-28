@@ -6,7 +6,7 @@ export default function Layout() {
   return (
     <main>
       <StaticHeader />
-      <div className="px-24">
+      <div className="px-4 sm:px-6 md:px-12 lg:px-24">
         <Outlet />
       </div>
 

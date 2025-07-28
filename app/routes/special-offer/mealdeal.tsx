@@ -43,10 +43,10 @@ const MealDeal: React.FC = () => {
         </button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-[600px] p-0 overflow-hidden">
-        <div className="bg-white h-[800px] rounded-xl relative">
+      <DialogContent className="max-w-[90vw] md:max-w-[600px] p-0 overflow-hidden">
+        <div className="bg-white h-[600px] md:h-[800px] rounded-xl relative">
           {/* Top Image */}
-          <div className="w-full h-[200px] relative">
+          <div className="w-full h-32 md:h-[200px] relative">
             <img
               src="/assests/pop-pop1.svg"
               alt="Pizza"
@@ -58,45 +58,47 @@ const MealDeal: React.FC = () => {
           </div>
 
           {/* Content */}
-          <div className="px-8 py-6">
+          <div className="px-4 md:px-8 py-4 md:py-6">
             {/* Breadcrumb */}
-            <div className="text-[14px] text-black font-bold mb-2">
+            <div className="text-xs md:text-[14px] text-black font-bold mb-2">
               <span className="text-black font-bold mr-2">Special Offers</span>
               &gt; Meal Deal 1
             </div>
 
             {/* Heading */}
-            <h2 className="text-[16px] font-mono mb-4 text-gray-500">
+            <h2 className="text-sm md:text-[16px] font-mono mb-4 text-gray-500">
               Please select your first Pizza
             </h2>
 
             {/* Pizza List */}
-            <div className="space-y-4 max-h-[380px] overflow-y-auto pr-2">
+            <div className="space-y-3 md:space-y-4 max-h-[280px] md:max-h-[380px] overflow-y-auto pr-2">
               {pizzaOptions.map((pizza) => {
                 const isActive = (quantities[pizza.name] || 0) > 0;
 
                 return (
                   <div
                     key={pizza.name + Math.random()}
-                    className={`flex items-center justify-between px-4 py-3 rounded-lg ${
+                    className={`flex items-center justify-between px-3 md:px-4 py-2 md:py-3 rounded-lg ${
                       isActive
                         ? "bg-[#070E2C] text-white"
                         : "bg-gray-100 text-black"
                     }`}
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 md:gap-4">
                       <img
                         src={pizza.image}
                         alt={pizza.name}
-                        className="w-12 h-12 rounded-full object-cover"
+                        className="w-8 h-8 md:w-12 md:h-12 rounded-full object-cover"
                       />
-                      <p className="font-bold">{pizza.name}</p>
+                      <p className="font-bold text-sm md:text-base">
+                        {pizza.name}
+                      </p>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => handleQuantity(pizza.name, -1)}
-                        className={`w-7 h-7 flex items-center justify-center rounded ${
+                        className={`w-6 h-6 md:w-7 md:h-7 flex items-center justify-center rounded text-sm md:text-base ${
                           isActive
                             ? "bg-white text-black"
                             : "bg-black text-white"
@@ -104,12 +106,12 @@ const MealDeal: React.FC = () => {
                       >
                         -
                       </button>
-                      <div className="w-8 text-center font-semibold">
+                      <div className="w-6 md:w-8 text-center font-semibold text-sm md:text-base">
                         {quantities[pizza.name] || 0}
                       </div>
                       <button
                         onClick={() => handleQuantity(pizza.name, 1)}
-                        className={`w-7 h-7 flex items-center justify-center rounded ${
+                        className={`w-6 h-6 md:w-7 md:h-7 flex items-center justify-center rounded text-sm md:text-base ${
                           isActive
                             ? "bg-white text-black"
                             : "bg-black text-white"
@@ -124,9 +126,9 @@ const MealDeal: React.FC = () => {
             </div>
 
             {/* Footer */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-6 md:mt-8">
               <div>
-                <button className="bg-[#F28A1E] text-white px-6 py-2 rounded font-semibold">
+                <button className="bg-[#F28A1E] text-white px-4 md:px-6 py-2 rounded font-semibold text-sm md:text-base">
                   Total to pay £127.90
                 </button>
                 <p className="text-xs text-gray-500 mt-1">
@@ -134,11 +136,11 @@ const MealDeal: React.FC = () => {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4">
-                <button className="underline text-sm text-black">
+              <div className="flex items-center gap-2 md:gap-4">
+                <button className="underline text-xs md:text-sm text-black">
                   Take me back
                 </button>
-                <button className="bg-green-600 text-white px-6 py-2 rounded font-semibold">
+                <button className="bg-green-600 text-white px-4 md:px-6 py-2 rounded font-semibold text-sm md:text-base">
                   Next Step
                 </button>
               </div>

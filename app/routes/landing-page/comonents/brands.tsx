@@ -30,61 +30,30 @@ export default function Brands() {
   }, []);
 
   return (
-    <div className=" mt-[56px] mb-[51px]">
-      <h2
-        className="font-bold mb-4"
-        style={{
-          width: "338px",
-          height: "56px",
-          transform: "rotate(0deg)",
-          opacity: 1,
-          top: "0px",
-          left: "0px",
-          fontSize: "32px",
-        }}
-      >
+    <div className="mt-8 md:mt-[56px] mb-8 md:mb-[51px] px-4 md:px-8">
+      <h2 className="font-bold mb-4 text-xl md:text-2xl lg:text-[32px]">
         Popular Restaurants
       </h2>
-      <div className="flex flex-wrap justify-start gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
         {jobs.map((job, idx) => (
           <Card
             key={idx}
             className="shadow-lg bg-[#FC8A06] relative overflow-hidden"
             style={{
-              width: "238px",
-              height: "266px",
-              transform: "rotate(0deg)",
-              opacity: 1,
               borderRadius: "12px",
             }}
           >
             <img
               src={job.image}
               alt={job.alt}
-              className="object-cover"
+              className="object-cover w-full h-32 md:h-40 lg:h-[203px]"
               style={{
-                width: "238px",
-                height: "203px",
-                transform: "rotate(0deg)",
-                opacity: 1,
-                top: "1884px",
-                left: "100px",
                 borderTopLeftRadius: "12px",
                 borderTopRightRadius: "12px",
               }}
             />
             <CardContent className="p-2 flex flex-col gap-2 bg-[#FC8A06] flex items-center justify-center">
-              <CardTitle
-                className="font-bold text-white text-center"
-                style={{
-                  width: "182px",
-                  height: "27px",
-                  transform: "rotate(0deg)",
-                  opacity: 1,
-                  top: "2105px",
-                  left: "128px",
-                }}
-              >
+              <CardTitle className="font-bold text-white text-center text-xs md:text-sm lg:text-base line-clamp-2">
                 {job.title}
               </CardTitle>
             </CardContent>
