@@ -3,12 +3,15 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Dialog } from "@headlessui/react";
+import { useFlow } from "~/lib/flow-context";
 
 const Deliverypop = () => {
   const [postcode, setPostcode] = useState("");
-  const [status, setStatus] = useState<"default" | "invalid" | "valid">("default");
+  const [status, setStatus] = useState<"default" | "invalid" | "valid">(
+    "default"
+  );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(true); // controls main popup visibility
+  const { currentStep, closeAll } = useFlow();
 
   const handleFind = () => {
     const isValidPincode = /^\d{6}$/.test(postcode);
@@ -53,7 +56,7 @@ const Deliverypop = () => {
     if (status === "valid") {
       return (
         <h2 className="text-[28px] font-extrabold text-[#070E2C] leading-tight mb-2">
-          You’re All Set! <br />
+          You're All Set! <br />
           <span className="underline text-green-600">Post Code</span> Submitted
         </h2>
       );
@@ -62,7 +65,9 @@ const Deliverypop = () => {
     return (
       <h2 className="text-[28px] font-extrabold text-[#070E2C] leading-tight mb-2">
         Please Enter Your <br />
-        <span className={`underline ${status === "invalid" ? "text-red-600" : ""}`}>
+        <span
+          className={`underline ${status === "invalid" ? "text-red-600" : ""}`}
+        >
           Post Code
         </span>
       </h2>
@@ -73,7 +78,7 @@ const Deliverypop = () => {
     if (status === "invalid") {
       return (
         <p className="text-red-600 font-semibold mt-2">
-          Sorry, we don’t do delivery to your area.
+          Sorry, we don't do delivery to your area.
         </p>
       );
     }
@@ -87,7 +92,9 @@ const Deliverypop = () => {
     return null;
   };
 
-  if (!isPopupOpen) return null;
+  const isOpen = currentStep === "delivery";
+
+  if (!isOpen) return null;
 
   return (
     <>
@@ -97,7 +104,7 @@ const Deliverypop = () => {
           {/* Close Button for Main Popup */}
           <button
             className="absolute top-4 right-4 bg-[#070E2C] text-white rounded-full p-2 z-10"
-            onClick={() => setIsPopupOpen(false)}
+            onClick={closeAll}
           >
             <IoClose size={24} />
           </button>
@@ -114,7 +121,8 @@ const Deliverypop = () => {
               {renderHeading()}
 
               <p className="text-[#070E2C] text-[14px] mb-4">
-                To start placing delivery order, please enter your full postcode here
+                To start placing delivery order, please enter your full postcode
+                here
               </p>
 
               {/* Input and Button */}
@@ -166,7 +174,10 @@ const Deliverypop = () => {
             {/* Close Button inside Dialog */}
             <button
               className="absolute top-3 right-3 bg-gray-200 text-black p-1 rounded-full"
-              onClick={() => setIsDialogOpen(false)}
+              onClick={() => {
+                setIsDialogOpen(false);
+                closeAll();
+              }}
             >
               <IoClose size={20} />
             </button>
@@ -175,12 +186,16 @@ const Deliverypop = () => {
               Delivery Confirmed!
             </Dialog.Title>
             <Dialog.Description className="text-sm text-gray-600 mt-2">
-              We deliver to your area. Continue to explore the menu and place your order.
+              We deliver to your area. Continue to explore the menu and place
+              your order.
             </Dialog.Description>
             <div className="mt-6 flex justify-end">
               <button
                 className="bg-[#F28A1E] text-white px-4 py-2 rounded-md font-semibold"
-                onClick={() => setIsDialogOpen(false)}
+                onClick={() => {
+                  setIsDialogOpen(false);
+                  closeAll();
+                }}
               >
                 Okay
               </button>

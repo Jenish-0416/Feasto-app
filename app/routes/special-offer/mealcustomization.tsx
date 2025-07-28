@@ -3,11 +3,8 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaFish, FaDrumstickBite, FaCarrot } from "react-icons/fa";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-} from "~/components/ui/dialog";
+import { Dialog, DialogTrigger, DialogContent } from "~/components/ui/dialog";
+import { useFlow } from "~/lib/flow-context";
 
 const maxSelections = 4;
 
@@ -29,6 +26,7 @@ const toppings = {
 
 const MealCustomization = () => {
   const [selected, setSelected] = useState<string[]>([]);
+  const { currentStep, openAddRequest, closeAll } = useFlow();
 
   const toggleTopping = (topping: string) => {
     if (selected.includes(topping)) {
@@ -40,31 +38,34 @@ const MealCustomization = () => {
 
   const isChecked = (topping: string) => selected.includes(topping);
 
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <button className="bg-orange-500 text-white px-4 py-2 rounded font-bold">
-          Customize Pizza
-        </button>
-      </DialogTrigger>
+  const handleNextStep = () => {
+    openAddRequest();
+  };
 
+  const isOpen = currentStep === "customization";
+
+  return (
+    <Dialog open={isOpen} onOpenChange={(open) => !open && closeAll()}>
       <DialogContent className="w-full max-w-[640px] p-0 overflow-hidden">
         <div className="bg-white h-[760px] rounded-xl overflow-hidden relative shadow-lg flex flex-col">
-          {/* Top Image */}
+         
           <div className="w-full h-[200px] relative overflow-hidden">
             <img
               src="/assests/pop-pop1.svg"
               alt="Pizza"
               className="w-full h-full object-cover"
             />
-            <button className="absolute top-4 right-4 bg-white text-black rounded-full p-1 shadow">
+            <button
+              onClick={closeAll}
+              className="absolute top-4 right-4 bg-white text-black rounded-full p-1 shadow"
+            >
               <IoClose size={24} />
             </button>
           </div>
 
-          {/* Content */}
+         
           <div className="flex flex-col h-full px-8 py-6">
-            {/* Breadcrumb */}
+          
             <div className="text-[14px] text-black font-semibold mb-2">
               <span>Special Offers</span> &gt; <span>Meal Deal 1</span> &gt;{" "}
               <span className="font-bold">Customise Pizza 1</span>
@@ -73,12 +74,12 @@ const MealCustomization = () => {
               </span>
             </div>
 
-            {/* Title */}
+           
             <h2 className="text-[16px] font-mono mb-2">
               Customise your chicken Pizza
             </h2>
 
-            {/* Icon + message */}
+           
             <div className="flex items-center gap-4 mb-4">
               <img
                 src="/assests/poppizza2.svg"
@@ -91,9 +92,9 @@ const MealCustomization = () => {
               </p>
             </div>
 
-            {/* Scrollable Toppings */}
+           
             <div className="flex-1 overflow-y-auto pr-2 space-y-6">
-              {/* Veg Toppings */}
+             
               <div className="border border-gray-300 rounded-xl p-4 relative">
                 <div className="absolute -top-4 left-4 flex items-center z-10">
                   <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-md">
@@ -122,7 +123,7 @@ const MealCustomization = () => {
                 </div>
               </div>
 
-              {/* Meat Toppings */}
+             
               <div className="border border-gray-300 rounded-xl p-4 relative">
                 <div className="absolute -top-4 left-4 flex items-center z-10">
                   <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-md">
@@ -151,7 +152,7 @@ const MealCustomization = () => {
                 </div>
               </div>
 
-              {/* Seafood Toppings */}
+             
               <div className="border border-gray-300 rounded-xl p-4 relative">
                 <div className="absolute -top-4 left-4 flex items-center z-10">
                   <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-md">
@@ -181,7 +182,7 @@ const MealCustomization = () => {
               </div>
             </div>
 
-            {/* Footer */}
+           
             <div className="mt-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex flex-col">
@@ -195,10 +196,16 @@ const MealCustomization = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <button className="underline text-sm text-black font-semibold">
+                  <button
+                    onClick={closeAll}
+                    className="underline text-sm text-black font-semibold"
+                  >
                     Take me back
                   </button>
-                  <button className="bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-2 rounded-md flex items-center gap-2">
+                  <button
+                    onClick={handleNextStep}
+                    className="bg-green-700 hover:bg-green-800 text-white font-semibold px-6 py-2 rounded-md flex items-center gap-2"
+                  >
                     <span className="bg-white text-green-700 rounded-full w-5 h-5 flex items-center justify-center text-sm font-bold">
                       →
                     </span>

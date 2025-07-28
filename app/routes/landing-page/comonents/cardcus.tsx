@@ -53,7 +53,7 @@ export default function FoodCardGrid() {
         </div>
       </div>
 
-      {/* Grid of Cards */}
+    
       <div className="flex flex-wrap gap-3 justify-center px-[1px]">
         {jobs.map((item, index) => (
           <div
@@ -61,7 +61,7 @@ export default function FoodCardGrid() {
             className="relative rounded-[12px] overflow-hidden shadow-md group"
             style={{ width: "488px", height: "325px", opacity: 1 }}
           >
-            {/* Discount Badge */}
+        
             <div
               className="absolute bg-[#0A1026] text-white text-sm font-bold z-10 flex items-center justify-center"
               style={{
@@ -78,14 +78,14 @@ export default function FoodCardGrid() {
               {item.discount}
             </div>
 
-            {/* Image */}
+        
             <img
               src={item.image}
               alt={item.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
-            {/* Gradient Overlay */}
+        
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end px-5 pb-5 z-10">
               <span className="text-[#FC8A06] text-sm font-medium mb-1">
                 {item.tag}

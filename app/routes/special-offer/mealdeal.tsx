@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
+import { useFlow } from "~/lib/flow-context";
 
 const pizzaOptions = [
   { name: "Margherita", image: "/assests/poppizza1.svg" },
@@ -28,6 +29,8 @@ const MealDeal: React.FC = () => {
     Toscana: 1,
   });
 
+  const { currentStep, openCustomization, closeAll } = useFlow();
+
   const handleQuantity = (name: string, delta: number) => {
     setQuantities((prev) => ({
       ...prev,
@@ -35,42 +38,45 @@ const MealDeal: React.FC = () => {
     }));
   };
 
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <button className="bg-orange-500 text-white px-4 py-2 rounded font-bold">
-          Open Meal Deal
-        </button>
-      </DialogTrigger>
+  const handleNextStep = () => {
+    openCustomization();
+  };
 
+  const isOpen = currentStep === "mealdeal";
+
+  return (
+    <Dialog open={isOpen} onOpenChange={(open) => !open && closeAll()}>
       <DialogContent className="max-w-[90vw] md:max-w-[600px] p-0 overflow-hidden">
         <div className="bg-white h-[600px] md:h-[800px] rounded-xl relative">
-          {/* Top Image */}
+         
           <div className="w-full h-32 md:h-[200px] relative">
             <img
               src="/assests/pop-pop1.svg"
               alt="Pizza"
               className="w-full h-full object-cover"
             />
-            <button className="absolute top-2 right-2 bg-orange-500 text-white rounded-full">
+            <button
+              onClick={closeAll}
+              className="absolute top-2 right-2 bg-orange-500 text-white rounded-full"
+            >
               <IoClose size={20} />
             </button>
           </div>
 
-          {/* Content */}
+         
           <div className="px-4 md:px-8 py-4 md:py-6">
-            {/* Breadcrumb */}
+          
             <div className="text-xs md:text-[14px] text-black font-bold mb-2">
               <span className="text-black font-bold mr-2">Special Offers</span>
               &gt; Meal Deal 1
             </div>
 
-            {/* Heading */}
+           
             <h2 className="text-sm md:text-[16px] font-mono mb-4 text-gray-500">
               Please select your first Pizza
             </h2>
 
-            {/* Pizza List */}
+           
             <div className="space-y-3 md:space-y-4 max-h-[280px] md:max-h-[380px] overflow-y-auto pr-2">
               {pizzaOptions.map((pizza) => {
                 const isActive = (quantities[pizza.name] || 0) > 0;
@@ -125,7 +131,7 @@ const MealDeal: React.FC = () => {
               })}
             </div>
 
-            {/* Footer */}
+           
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-6 md:mt-8">
               <div>
                 <button className="bg-[#F28A1E] text-white px-4 md:px-6 py-2 rounded font-semibold text-sm md:text-base">
@@ -137,10 +143,16 @@ const MealDeal: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2 md:gap-4">
-                <button className="underline text-xs md:text-sm text-black">
+                <button
+                  onClick={closeAll}
+                  className="underline text-xs md:text-sm text-black"
+                >
                   Take me back
                 </button>
-                <button className="bg-green-600 text-white px-4 md:px-6 py-2 rounded font-semibold text-sm md:text-base">
+                <button
+                  onClick={handleNextStep}
+                  className="bg-green-600 text-white px-4 md:px-6 py-2 rounded font-semibold text-sm md:text-base"
+                >
                   Next Step
                 </button>
               </div>

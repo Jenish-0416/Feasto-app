@@ -40,7 +40,7 @@ export default function Drinks() {
             key={index}
             className="flex justify-between items-center bg-white rounded-2xl shadow-lg overflow-hidden transition duration-200 border border-gray-200 hover:shadow-xl"
           >
-            {/* Left: Text */}
+           
             <div className="p-8 flex-1">
               <h3 className="text-lg font-semibold text-black mb-2">
                 {item.title}
@@ -49,7 +49,7 @@ export default function Drinks() {
               <p className="font-bold text-[#0A1026]">{item.price}</p>
             </div>
 
-            {/* Right: Image with corner icon */}
+           
             <div className="relative w-[180px] h-[180px] flex-shrink-0 rounded-tr-2xl rounded-br-2xl overflow-hidden right-5">
               <img
                 src={item.image}

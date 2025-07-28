@@ -6,22 +6,12 @@ import { categories, foodItems, pizzaItems } from "../../../lib/constants";
 export default function OrderHero() {
   return (
     <div className="relative bg-[url('/public/assests/secheader.svg')] rounded-2xl py-8 md:py-12 lg:py-[60px] px-4 md:px-8 lg:px-[100px]">
-      {/* Overlay */}
+      
       <div className="absolute inset-0 bg-[#F4F4F4E5] rounded-2xl z-0" />
 
-      <div
-        className="absolute bottom-0 left-0 z-20 flex items-center gap-2 px-4 md:px-6 py-3 md:py-4 bg-[#FF9100] text-black font-semibold rounded-tr-xl rounded-br-xl m-2 md:m-4 text-sm md:text-base"
-        style={{
-          width: "280px",
-          height: "50px",
-        }}
-      >
-        <Clock className="w-4 md:w-5 h-4 md:h-5" />
-        Open until 3:00 AM
-      </div>
 
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between max-w-[1520px] mx-auto gap-6 lg:gap-0">
-        {/* Left Section */}
+      
         <div className="space-y-3 md:space-y-4 h-auto lg:h-[66px] max-w-full lg:max-w-[666px]">
           <p className="text-sm md:text-base lg:text-[20px] text-[#03081F]">
             Desi Flavours with a blend of Italian aesthetics
@@ -62,6 +52,18 @@ export default function OrderHero() {
             <p className="text-xs md:text-sm text-gray-600">1,360 reviews</p>
           </div>
         </div>
+      </div>
+      <div
+        className="absolute bottom-0 left-0 items-center justify-center inline-flex gap-2  bg-[#FF9100] text-black font-semibold text-sm md:text-base"
+        style={{
+          borderTopRightRadius: "12px",
+          borderBottomRightRadius: "12px",
+          width: "280px",
+          height: "50px",
+        }}
+      >
+        <Clock className="w-4 md:w-5 h-4 md:h-5" />
+        Open until 3:00 AM
       </div>
     </div>
   );

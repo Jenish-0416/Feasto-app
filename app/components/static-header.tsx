@@ -23,7 +23,6 @@ export default function StaticHeader() {
 
   return (
     <div className="w-full font-sans">
-      {/* Mobile Header */}
       <div className="md:hidden w-full bg-white shadow-md font-sans text-sm rounded-b-2xl overflow-hidden">
         <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
           <img
@@ -32,29 +31,48 @@ export default function StaticHeader() {
             className="h-6 object-contain cursor-pointer"
             onClick={() => navigate("/")}
           />
-          <div className="flex items-center bg-[#028643] text-white rounded px-2 py-1">
-            <img
-              src="/assests/shopicon.svg"
-              alt="Basket"
-              className="h-4 mr-1"
-            />
-            <span className="text-sm font-bold">GBP 79.89</span>
-          </div>
           <Menu className="w-6 h-6 text-black" />
         </div>
-        <div className="flex items-center justify-between px-4 py-2 bg-[#FC8A06] text-white">
-          <div className="flex items-center gap-2">
+        {/* Card with user info and basket */}
+        <div className="flex w-full">
+          {/* User info */}
+          <div className="flex items-center flex-1 bg-[#F3F3F3] p-3 gap-3">
             <img
               src="/assests/user.jpg"
               alt="User"
-              className="h-6 w-6 rounded-full object-cover"
+              className="h-14 w-14 rounded-full object-cover"
             />
-            <span className="text-sm font-medium">Aycan</span>
+            <div className="flex flex-col justify-center">
+              <span className="text-[#FC8A06] font-bold text-lg leading-tight">
+                Aycan
+              </span>
+              <a
+                href="#"
+                className="text-black underline text-base leading-tight"
+              >
+                My Account
+              </a>
+            </div>
           </div>
+          {/* Basket */}
+          <div className="flex items-center bg-[#028643] px-6 min-w-[160px] justify-center">
+            <img
+              src="/assests/shopicon.svg"
+              alt="Basket"
+              className="h-8 mr-2"
+            />
+            <span className="text-white text-lg font-bold">GBP 79.89</span>
+          </div>
+        </div>
+        {/* Location bar */}
+        <div className="flex items-center gap-2 px-25 py-3">
+          <MapPin className="w-5 h-5 text-black" />
+          <span className="text-black text-base truncate">
+            Lution Street, N4G-00....
+          </span>
         </div>
       </div>
 
-      {/* Top Bar */}
       <div className="hidden md:flex items-center justify-between text-sm border-2 border-[#0000001A] bg-[#FAFAFA] rounded-b-2xl shadow-none mx-4 lg:mx-[100px] h-16">
         <div className="flex items-center space-x-1 p-4 lg:p-6">
           <span>🌟</span>
@@ -96,7 +114,6 @@ export default function StaticHeader() {
         </div>
       </div>
 
-      {/* Navbar */}
       <div className="hidden md:flex items-center justify-between px-4 lg:px-6 py-6 lg:py-9 mx-4 lg:mx-[70px] bg-white">
         <div>
           <img
@@ -107,7 +124,6 @@ export default function StaticHeader() {
           />
         </div>
 
-        {/* Desktop Nav */}
         <div className="hidden lg:flex gap-[20px]">
           {navItems.map((item) => (
             <span
@@ -124,7 +140,6 @@ export default function StaticHeader() {
           ))}
         </div>
 
-        {/* Tablet Nav */}
         <div className="flex lg:hidden gap-2">
           {navItems.slice(0, 3).map((item) => (
             <span
@@ -141,7 +156,6 @@ export default function StaticHeader() {
           ))}
         </div>
 
-        {/* Login Button */}
         <div
           className="flex items-center gap-3 bg-black text-white px-4 lg:px-[26px] py-3 lg:py-4 rounded-full text-sm lg:text-lg cursor-pointer"
           onClick={() => navigate("/login")}

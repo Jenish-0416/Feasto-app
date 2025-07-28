@@ -13,21 +13,21 @@ import {
 const Basket = () => {
   return (
     <div className="w-[370px] bg-white rounded-xl border p-4 shadow-md space-y-4">
-      {/* Header */}
+   
       <div className="bg-orange-500 text-white rounded-lg p-4 flex items-center space-x-3">
         <div className="text-xl">🕒</div>
         <div className="font-semibold">Open until 3:00 AM</div>
       </div>
 
-      {/* My Basket */}
+   
       <div className="bg-green-700 text-white rounded-lg p-4 font-bold text-lg flex items-center space-x-2">
         <div className="text-xl">🛒</div>
         <span>My Basket</span>
       </div>
 
-      {/* Basket Items */}
+    
       <div className="space-y-4">
-        {/* Item 1 */}
+       
         <BasketItem
           qty={1}
           title='12" Vegitarian Pizza'
@@ -36,7 +36,7 @@ const Basket = () => {
           icon={<Trash2 className="w-5 h-5" />}
         />
 
-        {/* Item 2 */}
+   
         <BasketItem
           qty={1}
           title='17" Tandoori Pizza'
@@ -45,7 +45,7 @@ const Basket = () => {
           icon={<Trash className="w-5 h-5" />}
         />
 
-        {/* Item 3 */}
+
         <BasketItem
           qty={2}
           title="Coke Coca Cola"
@@ -54,7 +54,7 @@ const Basket = () => {
           icon={<TrashIcon className="w-5 h-5 text-red-600" />}
         />
 
-        {/* Item 4 */}
+   
         <BasketItem
           qty={1}
           title='12" Vegitarian Pizza'
@@ -64,7 +64,7 @@ const Basket = () => {
         />
       </div>
 
-      {/* Summary */}
+
       <div className="space-y-1 text-[15px] font-medium">
         <div className="flex justify-between">
           <span>Sub Total:</span>
@@ -80,13 +80,13 @@ const Basket = () => {
         </div>
       </div>
 
-      {/* Total */}
+
       <div className="bg-orange-500 rounded-lg text-white text-[18px] font-bold p-4 flex justify-between">
         <span>Total to pay</span>
         <span>£127.90</span>
       </div>
 
-      {/* Select Free Item */}
+ 
       <div className="space-y-3">
         <button className="w-full flex justify-between items-center px-4 py-3 border rounded-xl text-gray-700">
           Choose your free item..
@@ -99,7 +99,7 @@ const Basket = () => {
         </button>
       </div>
 
-      {/* Delivery Options */}
+
       <div className="grid grid-cols-2 gap-2 mt-4">
         <div className="flex flex-col items-center border rounded-xl p-2 bg-green-100">
           <Truck className="w-5 h-5 text-green-700" />
@@ -113,7 +113,7 @@ const Basket = () => {
         </div>
       </div>
 
-      {/* Checkout Button */}
+
       <button className="w-full bg-green-700 text-white text-lg py-3 rounded-xl flex items-center justify-center gap-2">
         <ArrowRightCircle className="w-5 h-5" />
         Checkout!

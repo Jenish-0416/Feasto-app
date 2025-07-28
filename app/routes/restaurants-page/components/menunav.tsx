@@ -46,7 +46,7 @@ export default function MenuNav() {
 
   return (
     <div className="bg-white py-10">
-      {/* Scrollable Categories */}
+    
       <div className="flex gap-8 overflow-x-auto bg-[#F3F3F3] rounded-xl py-6 px-4 whitespace-nowrap">
         {categories.map((category) => (
           <button
@@ -61,7 +61,7 @@ export default function MenuNav() {
         ))}
       </div>
 
-      {/* Grid of Cards */}
+    
       <div className="mt-6 flex flex-wrap gap-[15px]">
         {foodItems.map((item, index) => (
           <div
@@ -69,7 +69,7 @@ export default function MenuNav() {
             className="relative rounded-[12px] overflow-hidden shadow-md group"
             style={{ width: "488px", height: "325px", opacity: 1 }}
           >
-            {/* Discount Badge */}
+           
             <div
               className="absolute bg-[#0A1026] text-white text-sm font-bold z-20 flex items-center justify-center"
               style={{
@@ -84,14 +84,14 @@ export default function MenuNav() {
               {item.discount}
             </div>
 
-            {/* Image */}
+           
             <img
               src={item.image}
               alt={item.title}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
-            {/* Gradient Overlay with Text */}
+           
             <div className="absolute inset-0 z-10 bg-[linear-gradient(245.7deg,_rgba(255,_255,_255,_0)_0.94%,_rgba(3,_8,_31,_0.19)_51.68%,_rgba(3,_8,_31,_0.89)_87.9%)] flex flex-col justify-end px-5 pb-5">
               <span className="text-[#FC8A06] text-sm font-medium mb-1">
                 {item.tag}
@@ -109,7 +109,7 @@ export default function MenuNav() {
               </h2>
             </div>
 
-            {/* Plus Button */}
+           
             <div className="absolute bottom-0 right-0 z-20">
               <div className="w-[97px] h-[89px] bg-white/80 rounded-tl-[40px] flex items-center justify-center backdrop-blur-sm">
                 <div className="w-[40px] h-[40px] rounded-full bg-[#0A1026] flex items-center justify-center">

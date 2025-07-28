@@ -6,6 +6,8 @@ import { MdOutlineDeliveryDining } from "react-icons/md";
 import { PiShoppingCartBold } from "react-icons/pi";
 import { TbShoppingBagCheck } from "react-icons/tb";
 import { api } from "~/lib/utils";
+import { useFlow } from "~/lib/flow-context";
+import { Link } from "react-router";
 
 type CardItem = {
   id: string;
@@ -22,7 +24,14 @@ type CardItem = {
   name?: string;
 };
 
-const PizzaCard = ({ id, title, description, image, price, label }: CardItem) => {
+const PizzaCard = ({
+  id,
+  title,
+  description,
+  image,
+  price,
+  label,
+}: CardItem) => {
   const [sizes, setSizes] = useState<CardItem[]>([]);
   const [selectedSize, setSelectedSize] = useState("Small");
 
@@ -147,7 +156,9 @@ const FoodCardGrid = () => {
 };
 
 const Menu = () => {
-  const [menuItems, setMenuItems] = useState<{ id: string; name: string }[]>([]);
+  const [menuItems, setMenuItems] = useState<{ id: string; name: string }[]>(
+    []
+  );
 
   const getMenuItems = async () => {
     try {
@@ -191,6 +202,7 @@ const Menu = () => {
 
 const Checkout = () => {
   const [basketItems, setBasketItems] = useState<CardItem[]>([]);
+  const { openMealDeal } = useFlow();
 
   const getBasketItems = async () => {
     try {
@@ -221,6 +233,10 @@ const Checkout = () => {
         return total + price * item.qty;
       }, 0)
       .toFixed(2);
+  };
+
+  const handleCheckout = () => {
+    openMealDeal();
   };
 
   return (
@@ -258,21 +274,25 @@ const Checkout = () => {
             <span>Sub Total:</span> <span>£{calculateSubtotal()}</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Discounts:</span> <span>-£3.00</span>
+            <span className="font-semibold">Discounts:</span>{" "}
+            <span>-£3.00</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Delivery Fee:</span> <span>£2.50</span>
+            <span className="font-semibold">Delivery Fee:</span>{" "}
+            <span>£2.50</span>
           </div>
         </div>
         <div className="mt-3 bg-[#FC8A06CC] text-white font-bold py-2 px-4 text-center rounded">
           Total to pay{" "}
           <span className="text-2xl">
-            £{(parseFloat(calculateSubtotal()) - 3.00 + 2.50).toFixed(2)}
+            £{(parseFloat(calculateSubtotal()) - 3.0 + 2.5).toFixed(2)}
           </span>
         </div>
         <div className="space-y-3 pt-4">
           <div className="flex items-center justify-between border rounded-full px-3 py-2">
-            <span className="text-sm text-gray-500">Choose your free item..</span>
+            <span className="text-sm text-gray-500">
+              Choose your free item..
+            </span>
             <IoIosArrowDown />
           </div>
           <div className="flex items-center justify-between border rounded-full px-3 py-2">
@@ -295,9 +315,14 @@ const Checkout = () => {
             <div className="text-gray-400">Starts at 16:50</div>
           </div>
         </div>
-        <button className="w-full mt-4 bg-green-700 text-white py-3 rounded text-lg font-bold flex items-center justify-center gap-2">
-          <IoIosArrowForward /> Checkout!
-        </button>
+        <Link to="/special-offer">
+          <button
+            onClick={handleCheckout}
+            className="w-full mt-4 bg-green-700 text-white py-3 rounded text-lg font-bold flex items-center justify-center gap-2 "
+          >
+            <IoIosArrowForward /> Checkout!
+          </button>
+        </Link>
       </div>
     </div>
   );

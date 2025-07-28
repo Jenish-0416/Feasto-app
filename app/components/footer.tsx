@@ -10,9 +10,9 @@ import {
 export default function Footer() {
   return (
     <footer className="bg-[#e6e6e6] text-gray-800 w-full">
-      {/* Main Grid Area */}
+     
       <div className="w-full px-4 sm:px-6 md:px-12 lg:px-25 py-6 md:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-y-10 md:gap-x-40">
-        {/* Logo and App Links */}
+     
         <div className="sm:col-span-2 lg:col-span-1">
           <img
             src="public/assests/logo2.svg"
@@ -40,7 +40,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Email Subscribe */}
+    
         <div className="sm:col-span-2 lg:col-span-1">
           <h2 className="text-base md:text-lg font-semibold mb-3">
             Get Exclusive Deals in your Inbox
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Legal Pages */}
+    
         <div>
           <h2 className="text-base md:text-lg font-semibold mb-3">
             Legal Pages
@@ -98,7 +98,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Important Links */}
+    
         <div>
           <h2 className="text-base md:text-lg font-semibold mb-3">
             Important Links
@@ -128,7 +128,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar */}
+    
       <div className="bg-[#0d0f1d] text-white text-xs md:text-sm py-4 px-4 md:px-20 flex flex-col md:flex-row justify-between items-center mt-6">
         <p className="text-center md:text-left mb-2 md:mb-0">
           Order.uk Copyright 2024, All Rights Reserved.

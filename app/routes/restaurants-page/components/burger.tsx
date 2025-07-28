@@ -43,7 +43,7 @@ export default function Burger() {
               index === 4 ? "border-" : ""
             }`}
           >
-            {/* Left side - Text */}
+           
             <div className="p-10 flex-1">
               <h3 className="text-lg font-semibold text-black mb-2">
                 {item.title}
@@ -52,7 +52,7 @@ export default function Burger() {
               <p className="font-bold text-[#0A1026]">{item.price}</p>
             </div>
 
-            {/* Right side - Image */}
+           
             <div className="relative w-[180px] h-[180px] flex-shrink-1 rounded-xl rounded-br-xl overflow-hidden right-5">
               <img
                 src={item.image}
@@ -60,7 +60,7 @@ export default function Burger() {
                 className="w-full h-full object-cover"
               />
 
-              {/* White corner with + icon */}
+             
               <div className="absolute bottom-0 right-0">
                 <div className="w-[70px] h-[70px] bg-white/80 rounded-tl-[30px] flex items-center justify-center backdrop-blur-sm">
                   <div className="w-8 h-8 bg-[#0A1026] rounded-full flex items-center justify-center">

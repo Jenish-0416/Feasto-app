@@ -6,7 +6,7 @@ import { categories, foodItems, pizzaItems } from "../lib/constants";
 export default function SecondHeader() {
   return (
     <div className="relative bg-[url('/public/assests/secheader.svg')] rounded-2xl py-[60px] px-[100px]">
-      {/* Overlay */}
+    
       <div className="absolute inset-0 bg-[#F4F4F4E5] rounded-2xl z-0" />
 
       <div
@@ -21,7 +21,7 @@ export default function SecondHeader() {
       </div>
 
       <div className="relative z-10 flex items-center justify-between max-w-[1520px] mx-auto">
-        {/* Left Section */}
+       
         <div className="space-y-4 h-[66px] max-w-[666px]">
           <p className="text-[20px] text-[#03081F]">
             Desi Flavours with a blend of Italian aesthetics
