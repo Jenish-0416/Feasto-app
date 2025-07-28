@@ -6,6 +6,44 @@ export interface FoodCategoryCard {
   description: string;
 }
 
+export const cards: FoodCategoryCard[] = [
+  {
+    image: "/assests/burger.png",
+    alt: "Burger",
+    title: "Burgers & Fast food",
+    description: "21 Restaurants",
+  },
+  {
+    image: "/assests/salad.png",
+    alt: "Salad",
+    title: "Salads",
+    description: "31 Restaurants",
+  },
+  {
+    image: "/assests/pasta.png",
+    alt: "Pasta",
+    title: "Pasta & Casuals",
+    description: "4 Restaurants",
+  },
+  {
+    image: "/assests/pizza.png",
+    alt: "Pizza",
+    title: "Pizzas",
+    description: "32 Restaurants",
+  },
+  {
+    image: "/assests/breakfast.png",
+    alt: "Breakfast",
+    title: "Breakfast",
+    description: "3 Restaurants",
+  },
+  {
+    image: "/assests/soup.png",
+    alt: "Soup",
+    title: "Soups",
+    description: "32 Restaurants",
+  },
+];
 
 export const categories = [
   "Offers",

@@ -9,14 +9,26 @@ const stats = [
 
 export default function Statesoverview() {
   return (
-    <div className="bg-[#FC8A06] items-center text-white px-right-6  py-10 shadow-lg rounded-xl ">
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-center">
+    <div className="bg-[#FC8A06] text-white rounded-xl p-6 w-full mx-auto shadow-lg">
+      {/* Mobile View: Vertical layout with dividers */}
+      <div className="flex flex-col md:hidden">
         {stats.map((stat, index) => (
-          <div key={index} className="w-1/2 md:w-1/4 py-4 px-2">
-            <span className="text-5xl block mb-2">{stat.value}</span>
-            <span className="text-lg md:text-xl font-semibold">
-              {stat.label}
-            </span>
+          <div key={index} className="text-center py-4">
+            <div className="text-4xl font-semibold mb-1">{stat.value}</div>
+            <div className="text-[15px] font-medium">{stat.label}</div>
+            {index < stats.length - 1 && (
+              <hr className="border-white border-opacity-40 mt-4" />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop View: Horizontal layout */}
+      <div className="hidden md:flex justify-between text-center">
+        {stats.map((stat, index) => (
+          <div key={index} className="w-1/4 px-4 py-6">
+            <div className="text-4xl font-semibold mb-1">{stat.value}</div>
+            <div className="text-[16px] font-medium">{stat.label}</div>
           </div>
         ))}
       </div>
