@@ -3,7 +3,7 @@ import { Truck, Phone, Clock } from "lucide-react";
 export default function Information() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3  bg-white p-8 sm:p-0  border-2 rounded-xl overflow-hidden shadow-2xl text-[18px]">
-      <div className="bg-white px-14 py-10 space-y-5">
+      <div className="bg-white py-10 space-y-5">
         <div className="flex items-center gap-3 text-[#0A1026] font-bold text-[24px]">
           <img src="public/assests/Tracking.svg" alt="" />
           Delivery information
@@ -39,7 +39,7 @@ export default function Information() {
         </div>
       </div>
 
-      <div className="bg-white px-10 py-10 space-y-5">
+      <div className="bg-white py-10 space-y-5">
         <div className="flex items-center gap-3 text-[#0A1026] font-bold text-[24px]">
           <img src="public/assests/ID Verified.svg" alt="" />
           Contact information

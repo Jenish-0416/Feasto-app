@@ -65,7 +65,7 @@ export default function OrderHero() {
       </div>
 
       {/* ✅ Mobile Version Only */}
-      <div className="block md:hidden p-4 bg-[url('public/assests/orderbg.svg')] rounded-2xl shadow-lg space-y-4">
+      <div className=" mb-5 block md:hidden bg-[url('public/assests/orderbg.svg')] rounded-2xl shadow-lg  ">
         {/* Image + Rating */}
         <div className="relative w-full p-10 flex flex-col justify-center items-center overflow-hidden">
           <img
@@ -80,7 +80,7 @@ export default function OrderHero() {
           </div>
         </div>
         {/* Open Time */}
-        <div className="bg-[#FF9100] text-white font-semibold w-[250px] flex items-center justify-center gap-2 py-2 rounded-r-lg">
+        <div className="bg-[#FF9100]  text-white font-semibold w-[250px] flex items-center justify-center gap-2 py-2 rounded-r-lg">
           <Clock className="w-4 h-4" />
           <span>Open until 3:00 AM</span>
         </div>
@@ -97,13 +97,13 @@ export default function OrderHero() {
         </div>
 
         {/* Info Boxes */}
-        <div className="space-y-2">
+        <div className="space-y-2 w-[300px] right-0 left-0 mx-auto ">
           <div className="flex items-center justify-center gap-2 bg-[#03081F] text-white px-4 py-4 rounded-full">
-            <FileText className="w-4 h-4" />
+            <FileText className="w-5 h-5" />
             <span className="text-[18px]">Minimum Order: 12 GBP</span>
           </div>
           <div className="flex items-center justify-center gap-2 bg-[#03081F] text-white px-4 py-4 rounded-full">
-            <Bike className="w-4 h-4" />
+            <Bike className="w-5 h-5" />
             <span className="text-[18px]">Delivery in 20–25 Minutes</span>
           </div>
         </div>

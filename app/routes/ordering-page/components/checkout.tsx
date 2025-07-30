@@ -68,35 +68,39 @@ const PizzaCard = ({
 
   return (
     <div className="w-full bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row justify-between gap-4 mb-6">
-      <div >
-        <div className="flex justify-between items-start gap-4">
-          <div>
-            
-          </div>
-      <div className="flex-1">
-          {/* LEFT: Title + Description */}
-            <h2 className="text-2xl font-bold mb-2">{title}</h2>
-            <div className="mb-4 flex gap-1">
-              {["🌶️", "🌶️", "🌶️", "🌶️‍", "🌶️‍"].map((pepper, i) => (
-                <span
-                  key={i}
-                  className={i < 3 ? "text-red-600" : "text-gray-400"}
-                >
-                  {pepper}
-                </span>
-              ))}
+      <div>
+        <div className="flex flex-col  ">
+          <div className="flex justify-between items-start gap-4">
+            <div className="flex-1">
+              {/* LEFT: Title + Description */}
+              <h2 className="text-2xl font-bold mb-2">{title}</h2>
+              <div className="mb-4 flex gap-1 ">
+                {["🌶️", "🌶️", "🌶️", "🌶️‍", "🌶️‍"].map((pepper, i) => (
+                  <span
+                    key={i}
+                    className={i < 3 ? "text-red-600" : "text-gray-400"}
+                  >
+                    {pepper}
+                  </span>
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4 leading-relaxed hidden sm:block">
+                {description}
+              </p>
             </div>
-            <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
-          </div>
 
-          {/* RIGHT: Image (small on small screens, big on md+) */}
-          <div className="w-[100px] h-[100px] md:w-[180px] md:h-[180px] rounded-full overflow-hidden shrink-0">
-            <img
-              src={image}
-              alt="Pizza"
-              className="object-cover w-full h-full"
-            />
+            {/* RIGHT: Image (small on small screens, big on md+) */}
+            <div className="w-[100px] h-[100px] md:w-[180px] md:h-[180px] rounded-full overflow-hidden shrink-0 ">
+              <img
+                src={image}
+                alt="Pizza"
+                className="object-cover w-full h-full"
+              />
+            </div>
           </div>
+          <p className="block sm:hidden text-gray-700 mb-4 leading-relaxed">
+            {description}
+          </p>
         </div>
 
         {/* Size Options */}
