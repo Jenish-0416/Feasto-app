@@ -9,15 +9,13 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#e6e6e6] text-gray-800 w-full">
-     
-      <div className="w-full px-4 sm:px-6 md:px-12 lg:px-25 py-6 md:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-y-10 md:gap-x-40">
-     
-        <div className="sm:col-span-2 lg:col-span-1">
+    <footer className="bg-[#ececec99] text-gray-800 w-full p">
+      <div className="w-full px-10 sm:px-6 md:px-12 lg:px-25 py-6 md:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-y-10 md:gap-x-40">
+        <div className="sm:col-span-2 flex flex-col justify-center items-center lg:col-span-1 bg-center">
           <img
             src="public/assests/logo2.svg"
             alt="Logo"
-            className="h-8 md:h-10 mb-4"
+            className=" h-8 md:h-10 mb-4"
           />
           <div className="flex gap-3 mb-4">
             <a href="https://apps.apple.com/in/app/order-uk/id6445226626">
@@ -35,23 +33,22 @@ export default function Footer() {
               />
             </a>
           </div>
-          <p className="text-xs md:text-sm">
+          <p className="text-xs md:text-sm lg:w-full flex justify-center items-center text-center w-[250px]">
             Company # 490039-445, Registered with House of companies.
           </p>
         </div>
 
-    
-        <div className="sm:col-span-2 lg:col-span-1">
+        <div className="sm:col-span-2 flex flex-col justify-center items-center lg:col-span-1">
           <h2 className="text-base md:text-lg font-semibold mb-3">
             Get Exclusive Deals in your Inbox
           </h2>
-          <div className="flex flex-col sm:flex-row items-center bg-white rounded-full overflow-hidden w-full max-w-md">
+          <div className="flex gap-5 border bg-[#D9D9D9]  sm:flex-row items-center rounded-full overflow-hidden w-full max-w-md">
             <input
               type="email"
               placeholder="youremail@gmail.com"
-              className="flex-grow ml-2 py-2 md:py-3 text-sm text-gray-700 outline-none bg-transparent w-full sm:w-auto"
+              className="flex-grow ml-2 py-2 md:py-3 text-sm text-[##00000099] outline-none  w-full justify-center items-center sm:w-auto"
             />
-            <button className="bg-[#FC8A06] rounded-full w-full sm:w-[200px] text-white px-2 py-2 md:py-3 text-sm font-semibold hover:bg-[#e67802] transition-all mt-2 sm:mt-0">
+            <button className="bg-[#FC8A06] rounded-full w-full sm:w-[200px] text-white px-2 py-2 md:py-3 text-sm font-semibold hover:bg-[#e67802] transition-all  sm:mt-0">
               Subscribe
             </button>
           </div>
@@ -69,7 +66,6 @@ export default function Footer() {
           </div>
         </div>
 
-    
         <div>
           <h2 className="text-base md:text-lg font-semibold mb-3">
             Legal Pages
@@ -98,7 +94,6 @@ export default function Footer() {
           </ul>
         </div>
 
-    
         <div>
           <h2 className="text-base md:text-lg font-semibold mb-3">
             Important Links
@@ -128,7 +123,6 @@ export default function Footer() {
         </div>
       </div>
 
-    
       <div className="bg-[#0d0f1d] text-white text-xs md:text-sm py-4 px-4 md:px-20 flex flex-col md:flex-row justify-between items-center mt-6">
         <p className="text-center md:text-left mb-2 md:mb-0">
           Order.uk Copyright 2024, All Rights Reserved.

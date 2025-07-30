@@ -392,36 +392,6 @@
   ],
   "basketItems": [
     {
-      "id": "56a6-f065",
-      "title": "Farm House Xtreme Pizza",
-      "price": "£25.90",
-      "image": "/assests/orderpizza1.svg",
-      "label": "Medium",
-      "qty": 1,
-      "name": "Farm House Xtreme Pizza (Medium)",
-      "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
-    },
-    {
-      "id": "56a6-f065",
-      "title": "Farm House Xtreme Pizza",
-      "price": "£25.90",
-      "image": "/assests/orderpizza1.svg",
-      "label": "Medium",
-      "qty": 1,
-      "name": "Farm House Xtreme Pizza (Medium)",
-      "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
-    },
-    {
-      "id": "56a6-f065",
-      "title": "Farm House Xtreme Pizza",
-      "price": "£25.90",
-      "image": "/assests/orderpizza1.svg",
-      "label": "Medium",
-      "qty": 1,
-      "name": "Farm House Xtreme Pizza (Medium)",
-      "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
-    },
-    {
       "id": "e328-f065",
       "title": "Tandoori Deluxe Pizza",
       "price": "£25.90",
@@ -450,6 +420,36 @@
       "qty": 1,
       "name": "Farm House Xtreme Pizza (Medium)",
       "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
+    },
+    {
+      "id": "56a6-f065",
+      "title": "Farm House Xtreme Pizza",
+      "price": "£25.90",
+      "image": "/assests/orderpizza1.svg",
+      "label": "Medium",
+      "qty": 1,
+      "name": "Farm House Xtreme Pizza (Medium)",
+      "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
+    },
+    {
+      "id": "56a6-5183",
+      "title": "Farm House Xtreme Pizza",
+      "price": "£27.90",
+      "image": "/assests/orderpizza1.svg",
+      "label": "Large",
+      "qty": 1,
+      "name": "Farm House Xtreme Pizza (Large)",
+      "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
+    },
+    {
+      "id": "fe35-f065",
+      "title": "Veggie Overload Pizza",
+      "price": "£25.90",
+      "image": "/assests/orderpizza33.svg",
+      "label": "Medium",
+      "qty": 1,
+      "name": "Veggie Overload Pizza (Medium)",
+      "desc": "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese"
     }
   ]
 }

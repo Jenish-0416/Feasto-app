@@ -14,14 +14,16 @@ export default function Statesoverview() {
       <div className="flex flex-col md:hidden">
         {stats.map((stat, index) => (
           <div key={index} className="text-center py-3 md:py-4">
-            <div className="text-2xl md:text-4xl font-semibold mb-1">
+            <div className="text-[64px] md:text-4xl  mb-1">
               {stat.value}
             </div>
-            <div className="text-sm md:text-[15px] font-medium">
+            <div className="text-[24px] md:text-[15px] font-semibold">
               {stat.label}
             </div>
             {index < stats.length - 1 && (
-              <hr className="border-white border-opacity-40 mt-3 md:mt-4" />
+              <div className="flex justify-center items-center">
+                <hr className="border-white w-[200px] flex justify-center items-center border-opacity-40 mt-3 md:mt-4" />
+              </div>
             )}
           </div>
         ))}

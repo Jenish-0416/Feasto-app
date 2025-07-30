@@ -2,9 +2,9 @@ import { Truck, Phone, Clock } from "lucide-react";
 
 export default function Information() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-0 bg-white  border-2 rounded-xl overflow-hidden shadow-md text-[18px]">
+    <div className="grid grid-cols-1 md:grid-cols-3  bg-white  border-2 rounded-xl overflow-hidden shadow-2xl text-[18px]">
       
-      <div className="bg-white px-10 py-10 space-y-5">
+      <div className="bg-white px-14 py-10 space-y-5">
         <div className="flex items-center gap-3 text-[#0A1026] font-bold text-[24px]">
        <img src="public/assests/Tracking.svg" alt="" />
           Delivery information
@@ -63,7 +63,7 @@ export default function Information() {
       </div>
 
   
-      <div className="bg-[#0A1026] px-10 py-10 text-white space-y-5">
+      <div className="bg-[#0A1026] px-10 py-10 rounded-2xl text-white space-y-5">
         <div className="flex items-center gap-3 font-bold text-[24px]">
         <img src="public/assests/Clock.svg" alt="" />
           Operational Times

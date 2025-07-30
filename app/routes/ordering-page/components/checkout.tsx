@@ -51,7 +51,7 @@ const PizzaCard = ({
   const addToBasket = async (size: CardItem) => {
     try {
       const basketItem = {
-        id: `${id}-${size.id}`, // Unique ID for basket item
+        id: `${id}-${size.id}`,
         title,
         price: size.price,
         image,
@@ -61,57 +61,63 @@ const PizzaCard = ({
         desc: description,
       };
       await api.post("/basketItems", basketItem);
-      // Trigger a refresh of basket items in the Checkout component
-      // This could be optimized with a context or state management
     } catch (err) {
       console.error("Failed to add to basket", err);
     }
   };
 
   return (
-    <div className="max-w bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between gap-6 mb-6">
-      <div className="flex-1">
-        <h2 className="text-2xl font-bold mb-2">{title}</h2>
-        <div className="mb-4 flex gap-1">
-          {["🌶️", "🌶️", "🌶️", "🌶️‍", "🌶️‍"].map((pepper, i) => (
-            <span key={i} className={i < 3 ? "text-red-600" : "text-gray-400"}>
-              {pepper}
-            </span>
-          ))}
-        </div>
-        <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
-        <div className="flex flex-wrap gap-3">
-          {sizes.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => {
-                setSelectedSize(item.label);
-                addToBasket(item);
-              }}
-              className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer transition ${
-                selectedSize === item.label
-                  ? "bg-black text-white border-black"
-                  : "bg-white border-gray-300"
-              } ${
-                item.label === "XL Large with Sauces"
-                  ? "w-[300px]"
-                  : "w-[180px]"
-              }`}
-            >
-              <span className="font-semibold">{item.label}</span>
-              <span className="bg-green-600 text-white px-3 py-1 rounded-md text-sm font-semibold">
-                {item.price}
+    <div className="w-full bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row justify-between gap-4 mb-6">
+    <div className="flex-1 w-full">
+      <div className="flex justify-between items-start gap-4">
+        {/* LEFT: Title + Description */}
+        <div className="flex-1">
+          <h2 className="text-2xl font-bold mb-2">{title}</h2>
+          <div className="mb-4 flex gap-1">
+            {["🌶️", "🌶️", "🌶️", "🌶️‍", "🌶️‍"].map((pepper, i) => (
+              <span key={i} className={i < 3 ? "text-red-600" : "text-gray-400"}>
+                {pepper}
               </span>
-            </div>
-          ))}
+            ))}
+          </div>
+          <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
         </div>
-      </div>
-      <div className="flex-shrink-0">
-        <div className="w-[180px] h-[180px] rounded-full overflow-hidden">
+  
+        {/* RIGHT: Image (small on small screens, big on md+) */}
+        <div className="w-[100px] h-[100px] md:w-[180px] md:h-[180px] rounded-full overflow-hidden shrink-0">
           <img src={image} alt="Pizza" className="object-cover w-full h-full" />
         </div>
       </div>
+  
+      {/* Size Options */}
+      <div className="flex flex-wrap gap-3 mt-4">
+        {sizes.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => {
+              setSelectedSize(item.label);
+              addToBasket(item);
+            }}
+            className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer transition ${
+              selectedSize === item.label
+                ? "bg-black text-white border-black"
+                : "bg-white border-gray-300"
+            } ${
+              item.label === "XL Large with Sauces"
+                ? "w-full sm:w-[300px]"
+                : "w-full sm:w-[180px]"
+            }`}
+          >
+            <span className="font-semibold">{item.label}</span>
+            <span className="bg-green-600 text-white px-3 py-1 rounded-md text-sm font-semibold">
+              {item.price}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
+  </div>
+  
   );
 };
 
@@ -120,11 +126,9 @@ const FoodCardGrid = () => {
     <div className="pt-0">
       <div className="flex flex-col gap-4 px-2 pb-4">
         <div
-          className="relative rounded-lg overflow-hidden shadow-md group"
-          style={{ width: "100%", height: "200px" }}
+          className="relative rounded-lg overflow-hidden shadow-md group w-full h-[200px]"
         >
-          <div
-            className="absolute bg-[#0A1026] text-white text-xs font-bold z-10 flex items-center justify-center"
+          <div className="absolute bg-[#0A1026] text-white text-xs font-bold z-10 flex items-center justify-center"
             style={{
               width: "40px",
               height: "40px",
@@ -132,12 +136,11 @@ const FoodCardGrid = () => {
               left: "10px",
               borderBottomRightRadius: "10px",
               borderBottomLeftRadius: "10px",
-            }}
-          >
+            }}>
             -20%
           </div>
           <img
-            src="/assests/girl.svg" // Fixed path
+            src="/assests/girl.svg"
             alt="First Order Discount"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
@@ -174,28 +177,25 @@ const Menu = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="w-64 bg-white border rounded-lg overflow-y-auto">
-        <div className="flex items-center gap-2 p-6 text-lg font-bold">
-          <img src="/assests/Restaurant Menu.svg" alt="menu icon" />
-          <span>Menu</span>
-        </div>
-        <ul className="space-y-2 mb-6">
-          {menuItems.map((item) => (
-            <li
-              key={item.id}
-              className={`px-6 py-4 text-sm font-bold cursor-pointer ${
-                item.name === "Pizzas"
-                  ? "bg-[#0C0C0C] text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              {item.name}
-            </li>
-          ))}
-        </ul>
+    <div className="w-full md:w-64 bg-white border rounded-lg overflow-y-auto mb-4 md:mb-0">
+      <div className="flex items-center gap-2 p-6 text-lg font-bold">
+        <img src="/assests/Restaurant Menu.svg" alt="menu icon" />
+        <span>Menu</span>
       </div>
-      <FoodCardGrid />
+      <ul className="space-y-2 mb-6">
+        {menuItems.map((item) => (
+          <li
+            key={item.id}
+            className={`px-6 py-4 text-sm font-bold cursor-pointer ${
+              item.name === "Pizzas"
+                ? "bg-[#0C0C0C] text-white"
+                : "text-gray-700 hover:bg-gray-100"
+            }`}
+          >
+            {item.name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -240,7 +240,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="w-[280px] bg-white rounded-b-xl shadow-lg overflow-hidden">
+    <div className="w-full md:w-[280px] bg-white rounded-b-xl shadow-lg overflow-hidden mt-4 md:mt-0">
       <div className="flex flex-col gap-5">
         <div className="bg-[#FF8000] text-white text-sm py-5 px-4 font-semibold rounded-lg flex items-center gap-2">
           <span className="text-2xl">🕒</span> Open until 3:00 AM
@@ -274,12 +274,10 @@ const Checkout = () => {
             <span>Sub Total:</span> <span>£{calculateSubtotal()}</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Discounts:</span>{" "}
-            <span>-£3.00</span>
+            <span className="font-semibold">Discounts:</span> <span>-£3.00</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Delivery Fee:</span>{" "}
-            <span>£2.50</span>
+            <span className="font-semibold">Delivery Fee:</span> <span>£2.50</span>
           </div>
         </div>
         <div className="mt-3 bg-[#FC8A06CC] text-white font-bold py-2 px-4 text-center rounded">
@@ -345,26 +343,17 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="flex bg-[#f7f7f7] min-h-screen">
+    <div className="flex flex-col md:flex-row bg-[#f7f7f7] min-h-screen p-4 md:p-6">
       <Menu />
-      <div className="flex-1 p-6 overflow-y-auto">
-        <h1 className="text-xl font-bold mb-4">Browse Menu</h1>
+      <div className="flex-1 md:px-6 overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-xl font-bold">Pizzas</h1>
+          <button className="border px-3 py-2 rounded-lg flex items-center gap-1 text-sm shadow-sm">
+            Sort by Pricing <IoIosArrowDown />
+          </button>
+        </div>
         {pizzaItems.map((pizza) => (
-          <PizzaCard
-            key={pizza.id}
-            id={pizza.id}
-            title={pizza.title}
-            description={pizza.description}
-            image={pizza.image}
-            price={pizza.price || "£0.00"}
-            label={pizza.label || "Unknown"}
-            qty={pizza.qty || 1}
-            name={pizza.name || pizza.title}
-            desc={pizza.desc}
-            icon={pizza.icon}
-            discount={pizza.discount}
-            tag={pizza.tag}
-          />
+          <PizzaCard key={pizza.id} {...pizza} />
         ))}
       </div>
       <Checkout />

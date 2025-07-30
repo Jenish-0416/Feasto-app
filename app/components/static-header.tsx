@@ -38,7 +38,7 @@ export default function StaticHeader() {
           {/* User info */}
           <div className="flex items-center flex-1 bg-[#F3F3F3] p-3 gap-3">
             <img
-              src="/assests/user.jpg"
+              src="public/assests/heroresponsive.svg"
               alt="User"
               className="h-14 w-14 rounded-full object-cover"
             />
@@ -55,7 +55,7 @@ export default function StaticHeader() {
             </div>
           </div>
           {/* Basket */}
-          <div className="flex items-center bg-[#028643] px-6 min-w-[160px] justify-center">
+          <div className="flex items-center bg-[#028643] px-8 min-w-[160px] justify-center">
             <img
               src="/assests/shopicon.svg"
               alt="Basket"
@@ -64,14 +64,14 @@ export default function StaticHeader() {
             <span className="text-white text-lg font-bold">GBP 79.89</span>
           </div>
         </div>
+      </div>
         {/* Location bar */}
-        <div className="flex items-center gap-2 px-25 py-3">
+        <div className="flex items-center gap-2 px-25 py-5">
           <MapPin className="w-5 h-5 text-black" />
           <span className="text-black text-base truncate">
             Lution Street, N4G-00....
           </span>
         </div>
-      </div>
 
       <div className="hidden md:flex items-center justify-between text-sm border-2 border-[#0000001A] bg-[#FAFAFA] rounded-b-2xl shadow-none mx-4 lg:mx-[100px] h-16">
         <div className="flex items-center space-x-1 p-4 lg:p-6">
