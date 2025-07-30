@@ -480,6 +480,16 @@
       "qty": 1,
       "name": "Tandoori Deluxe Pizza (Large)",
       "desc": "Spicy chicken tikka, onion, green pepper, tandoori sauce, and mozzarella cheese"
+    },
+    {
+      "id": "56a6-f065",
+      "title": "Farm House Xtreme Pizza",
+      "price": "£25.90",
+      "image": "/assests/orderpizza1.svg",
+      "label": "Medium",
+      "qty": 1,
+      "name": "Farm House Xtreme Pizza (Medium)",
+      "desc": "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium sized French Fries, 3 cold drinks"
     }
   ]
 }
