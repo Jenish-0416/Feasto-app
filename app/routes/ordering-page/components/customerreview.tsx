@@ -42,10 +42,12 @@ export default function CustomerReviews() {
   return (
     <div className="relative bg-[#d6d6d6] pt-10 pb-[120px] md:px-[100px] w-full">
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-black text-center">Customer Reviews</h2>
+      <h2 className="text-3xl font-bold text-black text-center">
+        Customer Reviews
+      </h2>
 
       {/* Rating Box (Top Center in Mobile) */}
-      <div className="flex justify-center mt-6 md:hidden">
+      <div className="flex justify-center mt-6 sm:mt-0 sm:absolute  sm:-bottom-18 sm:left-0 sm:right-0">
         <div className="bg-white px-6 py-4 rounded-2xl shadow-md text-center w-[230px]">
           <h1 className="text-5xl font-semibold leading-none">3.4</h1>
           <div className="flex justify-center gap-1 mt-2 text-[#ff9800] text-xl">
@@ -60,15 +62,15 @@ export default function CustomerReviews() {
       </div>
 
       {/* Review Cards */}
-      <div className="mt-8 overflow-x-auto scrollbar-hide md:overflow-visible">
+      <div className="mt-8 overflow-x-auto scrollbar-hide md:overflow-hidden">
         <div
           ref={containerRef}
-          className="flex gap-4 px-4 md:flex-wrap md:justify-start md:gap-6 transition-all duration-300"
+          className="flex gap-4  md:flex md:flex-row  md:justify-start md:gap-6 transition-all duration-300 "
         >
           {reviews.map((review, i) => (
             <div
               key={i}
-              className="min-w-[90%] md:min-w-[30%] bg-white p-6 rounded-xl shadow-md"
+              className="min-w-[90%] md:min-w-100 bg-white p-6 rounded-xl shadow-md"
             >
               <div className="flex items-center gap-3 mb-4">
                 <img
@@ -103,7 +105,7 @@ export default function CustomerReviews() {
       </div>
 
       {/* Scroll Buttons (Visible only on Mobile) */}
-      <div className="flex justify-center gap-10 mt-8 md:hidden">
+      <div className="flex justify-center gap-10 mt-8 ">
         <button
           onClick={() => scroll("left")}
           className="bg-[#ff9800] w-[60px] h-[60px] rounded-full flex items-center justify-center shadow-md"

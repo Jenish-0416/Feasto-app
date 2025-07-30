@@ -68,56 +68,65 @@ const PizzaCard = ({
 
   return (
     <div className="w-full bg-white rounded-xl shadow-md p-4 flex flex-col md:flex-row justify-between gap-4 mb-6">
-    <div className="flex-1 w-full">
-      <div className="flex justify-between items-start gap-4">
-        {/* LEFT: Title + Description */}
-        <div className="flex-1">
-          <h2 className="text-2xl font-bold mb-2">{title}</h2>
-          <div className="mb-4 flex gap-1">
-            {["🌶️", "🌶️", "🌶️", "🌶️‍", "🌶️‍"].map((pepper, i) => (
-              <span key={i} className={i < 3 ? "text-red-600" : "text-gray-400"}>
-                {pepper}
+      <div >
+        <div className="flex justify-between items-start gap-4">
+          <div>
+            
+          </div>
+      <div className="flex-1">
+          {/* LEFT: Title + Description */}
+            <h2 className="text-2xl font-bold mb-2">{title}</h2>
+            <div className="mb-4 flex gap-1">
+              {["🌶️", "🌶️", "🌶️", "🌶️‍", "🌶️‍"].map((pepper, i) => (
+                <span
+                  key={i}
+                  className={i < 3 ? "text-red-600" : "text-gray-400"}
+                >
+                  {pepper}
+                </span>
+              ))}
+            </div>
+            <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
+          </div>
+
+          {/* RIGHT: Image (small on small screens, big on md+) */}
+          <div className="w-[100px] h-[100px] md:w-[180px] md:h-[180px] rounded-full overflow-hidden shrink-0">
+            <img
+              src={image}
+              alt="Pizza"
+              className="object-cover w-full h-full"
+            />
+          </div>
+        </div>
+
+        {/* Size Options */}
+        <div className="flex flex-wrap gap-3 mt-2 mb-2 text-[14px]">
+          {sizes.map((item) => (
+            <div
+              key={item.id}
+              onClick={() => {
+                setSelectedSize(item.label);
+                addToBasket(item);
+              }}
+              className={`flex items-center justify-between px-2 py-3 rounded-lg border cursor-pointer transition ${
+                selectedSize === item.label
+                  ? "bg-black text-white border-black"
+                  : "bg-white border-gray-300"
+              } ${
+                item.label === "XL Large with Sauces"
+                  ? "w-[250px] sm:w-[400px]"
+                  : "w-[150px] sm:w-[250px]"
+              }`}
+            >
+              <span className="font-semibold">{item.label}</span>
+              <span className="bg-green-600 text-white px-3 py-1 rounded-md text-sm font-semibold">
+                {item.price}
               </span>
-            ))}
-          </div>
-          <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
+            </div>
+          ))}
         </div>
-  
-        {/* RIGHT: Image (small on small screens, big on md+) */}
-        <div className="w-[100px] h-[100px] md:w-[180px] md:h-[180px] rounded-full overflow-hidden shrink-0">
-          <img src={image} alt="Pizza" className="object-cover w-full h-full" />
-        </div>
-      </div>
-  
-      {/* Size Options */}
-      <div className="flex flex-wrap gap-3 mt-4">
-        {sizes.map((item) => (
-          <div
-            key={item.id}
-            onClick={() => {
-              setSelectedSize(item.label);
-              addToBasket(item);
-            }}
-            className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer transition ${
-              selectedSize === item.label
-                ? "bg-black text-white border-black"
-                : "bg-white border-gray-300"
-            } ${
-              item.label === "XL Large with Sauces"
-                ? "w-full sm:w-[300px]"
-                : "w-full sm:w-[180px]"
-            }`}
-          >
-            <span className="font-semibold">{item.label}</span>
-            <span className="bg-green-600 text-white px-3 py-1 rounded-md text-sm font-semibold">
-              {item.price}
-            </span>
-          </div>
-        ))}
       </div>
     </div>
-  </div>
-  
   );
 };
 
@@ -125,10 +134,9 @@ const FoodCardGrid = () => {
   return (
     <div className="pt-0">
       <div className="flex flex-col gap-4 px-2 pb-4">
-        <div
-          className="relative rounded-lg overflow-hidden shadow-md group w-full h-[200px]"
-        >
-          <div className="absolute bg-[#0A1026] text-white text-xs font-bold z-10 flex items-center justify-center"
+        <div className="relative rounded-lg overflow-hidden shadow-md group w-full h-[200px]">
+          <div
+            className="absolute bg-[#0A1026] text-white text-xs font-bold z-10 flex items-center justify-center"
             style={{
               width: "40px",
               height: "40px",
@@ -136,7 +144,8 @@ const FoodCardGrid = () => {
               left: "10px",
               borderBottomRightRadius: "10px",
               borderBottomLeftRadius: "10px",
-            }}>
+            }}
+          >
             -20%
           </div>
           <img
@@ -274,10 +283,12 @@ const Checkout = () => {
             <span>Sub Total:</span> <span>£{calculateSubtotal()}</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Discounts:</span> <span>-£3.00</span>
+            <span className="font-semibold">Discounts:</span>{" "}
+            <span>-£3.00</span>
           </div>
           <div className="flex justify-between text-gray-500">
-            <span className="font-semibold">Delivery Fee:</span> <span>£2.50</span>
+            <span className="font-semibold">Delivery Fee:</span>{" "}
+            <span>£2.50</span>
           </div>
         </div>
         <div className="mt-3 bg-[#FC8A06CC] text-white font-bold py-2 px-4 text-center rounded">
@@ -343,9 +354,11 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row bg-[#f7f7f7] min-h-screen p-4 md:p-6">
-      <Menu />
-      <div className="flex-1 md:px-6 overflow-y-auto">
+    <div className="flex flex-col lg:flex-row bg-[#f7f7f7] min-h-screen p-4 md:p-6">
+      <div className="hidden lg:block">
+        <Menu />
+      </div>
+      <div className="flex-1 lg:px-6 overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-xl font-bold">Pizzas</h1>
           <button className="border px-3 py-2 rounded-lg flex items-center gap-1 text-sm shadow-sm">

@@ -450,6 +450,36 @@
       "qty": 1,
       "name": "Veggie Overload Pizza (Medium)",
       "desc": "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese"
+    },
+    {
+      "id": "fe35-f065",
+      "title": "Veggie Overload Pizza",
+      "price": "£25.90",
+      "image": "/assests/orderpizza33.svg",
+      "label": "Medium",
+      "qty": 1,
+      "name": "Veggie Overload Pizza (Medium)",
+      "desc": "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese"
+    },
+    {
+      "id": "fe35-f065",
+      "title": "Veggie Overload Pizza",
+      "price": "£25.90",
+      "image": "/assests/orderpizza33.svg",
+      "label": "Medium",
+      "qty": 1,
+      "name": "Veggie Overload Pizza (Medium)",
+      "desc": "Mushrooms, olives, sweetcorn, jalapeños, capsicum, and mozzarella cheese"
+    },
+    {
+      "id": "e328-5183",
+      "title": "Tandoori Deluxe Pizza",
+      "price": "£27.90",
+      "image": "/assests/orderpizza3.svg",
+      "label": "Large",
+      "qty": 1,
+      "name": "Tandoori Deluxe Pizza (Large)",
+      "desc": "Spicy chicken tikka, onion, green pepper, tandoori sauce, and mozzarella cheese"
     }
   ]
 }

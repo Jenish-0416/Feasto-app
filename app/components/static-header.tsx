@@ -1,9 +1,11 @@
 "use client";
 
-import { MapPin, User, Menu } from "lucide-react";
+import { MapPin, User, Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router";
+import { useState } from "react";
 
 export default function StaticHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); // Get current route
 
@@ -17,6 +19,7 @@ export default function StaticHeader() {
 
   const handleNavigation = (path: string) => {
     navigate(path);
+    setIsMenuOpen(false); // Close menu when navigating
   };
 
   const isActive = (path: string) => location.pathname === path;
@@ -31,8 +34,58 @@ export default function StaticHeader() {
             className="h-6 object-contain cursor-pointer"
             onClick={() => navigate("/")}
           />
-          <Menu className="w-6 h-6 text-black" />
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-1 focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6 text-black" />
+            ) : (
+              <Menu className="w-6 h-6 text-black" />
+            )}
+          </button>
         </div>
+
+        {/* Off-canvas menu */}
+        <div
+          className={`fixed inset-0 bg-transparent  z-40 transform transition-all duration-300 ease-in-out ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <div
+            className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-4 border-b border-gray-200">
+              <div className="flex items-center gap-3">
+                <img
+                  src="public/assests/heroresponsive.svg"
+                  alt="User"
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+                <span className="text-[#FC8A06] font-bold">Aycan</span>
+              </div>
+            </div>
+            <nav className="py-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.path}
+                  onClick={() => handleNavigation(item.path)}
+                  className={`w-full text-left px-6 py-3 text-sm font-medium ${
+                    isActive(item.path)
+                      ? "text-[#FC8A06] bg-orange-50"
+                      : "text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  {item.name}
+                </button>
+              ))}
+            </nav>
+          </div>
+        </div>
+
         {/* Card with user info and basket */}
         <div className="flex w-full">
           {/* User info */}
@@ -65,13 +118,13 @@ export default function StaticHeader() {
           </div>
         </div>
       </div>
-        {/* Location bar */}
-        <div className="flex items-center gap-2 px-25 py-5">
-          <MapPin className="w-5 h-5 text-black" />
-          <span className="text-black text-base truncate">
-            Lution Street, N4G-00....
-          </span>
-        </div>
+      {/* Location bar */}
+      <div className="lg:hidden flex items-center gap-2 px-25 py-5">
+        <MapPin className="w-5 h-5 text-black" />
+        <span className="text-black text-base truncate">
+          Lution Street, N4G-00....
+        </span>
+      </div>
 
       <div className="hidden md:flex items-center justify-between text-sm border-2 border-[#0000001A] bg-[#FAFAFA] rounded-b-2xl shadow-none mx-4 lg:mx-[100px] h-16">
         <div className="flex items-center space-x-1 p-4 lg:p-6">

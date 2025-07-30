@@ -15,7 +15,7 @@ export default function Footer() {
           <img
             src="public/assests/logo2.svg"
             alt="Logo"
-            className=" h-8 md:h-10 mb-4"
+            className=" h-14 md:h-14 mb-4"
           />
           <div className="flex gap-3 mb-4">
             <a href="https://apps.apple.com/in/app/order-uk/id6445226626">
