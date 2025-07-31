@@ -41,8 +41,32 @@ export default function CustomerReviews() {
 
   return (
     <div className="relative bg-[#d6d6d6] pt-10 pb-[120px] md:px-[100px] w-full">
+      {/* Desktop Scroll Buttons - Top Right */}
+      <div className="hidden lg:flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-[#0A1026]">Customer Reviews</h2>
+        <div className="flex gap-4">
+          <button
+            onClick={() => scroll("left")}
+            className="bg-[#ff9800] w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:bg-[#f57c00] transition-colors"
+          >
+            <IoIosArrowBack className="text-2xl text-white" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="bg-[#ff9800] w-12 h-12 rounded-full flex items-center justify-center shadow-md hover:bg-[#f57c00] transition-colors"
+          >
+            <IoIosArrowForward className="text-2xl text-white" />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Title */}
+      <h2 className="lg:hidden text-2xl font-bold text-[#0A1026] mb-6">
+        Customer Reviews
+      </h2>
+
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-black text-center">
+      <h2 className="lg:hidden text-3xl font-bold text-black text-center">
         Customer Reviews
       </h2>
 
@@ -105,18 +129,18 @@ export default function CustomerReviews() {
       </div>
 
       {/* Scroll Buttons (Visible only on Mobile) */}
-      <div className="flex justify-center gap-10 mt-8 ">
+      <div className="lg:hidden flex justify-center gap-10 mt-8">
         <button
           onClick={() => scroll("left")}
-          className="bg-[#ff9800] w-[60px] h-[60px] rounded-full flex items-center justify-center shadow-md"
+          className="bg-[#ff9800] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-md hover:bg-[#f57c00] transition-colors"
         >
-          <IoIosArrowBack className="text-2xl text-black" />
+          <IoIosArrowBack className="text-xl md:text-2xl text-white" />
         </button>
         <button
           onClick={() => scroll("right")}
-          className="bg-[#ff9800] w-[60px] h-[60px] rounded-full flex items-center justify-center shadow-md"
+          className="bg-[#ff9800] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-md hover:bg-[#f57c00] transition-colors"
         >
-          <IoIosArrowForward className="text-2xl text-black" />
+          <IoIosArrowForward className="text-xl md:text-2xl text-white" />
         </button>
       </div>
     </div>
