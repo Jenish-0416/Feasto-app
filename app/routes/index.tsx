@@ -1,5 +1,5 @@
-import { Welcome } from "../welcome/welcome";
+import { redirect } from "react-router";
 
-export default function Home() {
-  return <Welcome />;
+export async function loader() {
+  return redirect("landing");
 }

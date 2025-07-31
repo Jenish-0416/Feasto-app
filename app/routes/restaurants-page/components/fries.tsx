@@ -1,0 +1,70 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { FaPlus } from "react-icons/fa";
+import { api } from "~/lib/utils";
+
+type fries = {
+    title: string;
+    description: string;
+    price: string;
+    image: string;
+};
+
+export default function Fries() {
+
+  const [jobs, setJobs] = useState<fries[]>([]);
+  
+    const getfoodcard = async () => {
+      try {
+        const res = await api.get("/fries");
+        console.log("response", res.data);
+        setJobs(res.data);
+      } catch (err) {
+        console.error("Failed to fetch jobs", err);
+      }
+    };
+  
+    useEffect(() => {
+      getfoodcard();
+    }, []);
+  return (
+    <div className="bg-white py-10 px-6">
+      <h2 className="text-4xl font-extrabold text-[#ff7a00] mb-8">Fries</h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        {jobs.map((item, index) => (
+          <div
+            key={index}
+            className="flex justify-between items-center bg-white rounded-2xl shadow-lg overflow-hidden transition duration-200 border border-gray-200 hover:shadow-xl"
+          >
+           
+            <div className="p-10 flex-1">
+              <h3 className="text-lg font-semibold text-black mb-2">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-700 mb-3">{item.description}</p>
+              <p className="font-bold text-[#0A1026]">{item.price}</p>
+            </div>
+
+           
+            <div className="relative w-[180px] h-[180px] flex-shrink-0 rounded-2xl rounded-br-2xl overflow-hidden right-5">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 right-0">
+                <div className="w-[70px] h-[70px]  bg-white/80 rounded-tl-[30px] flex items-center justify-center backdrop-blur-md">
+                  <div className="w-8 h-8 bg-[#0A1026] rounded-full flex items-center justify-center">
+                    <FaPlus className="text-white text-xs" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
